@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
+    tools:context=".Activities.ProfileActivity">
+
+
+    <ImageView
+        android:layout_width="1080px"
+        android:layout_height="920px"
+        tools:ignore="MissingConstraints">
+
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="123dp">
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="87dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ic_launcher"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:drawablePadding="5dp"
+            android:text="MOHAMED EL_HDAD"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold">
+
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:text="founder ultras fci \nfounder ultras fci \nfounder ultras fci \nfounder ultras fci"
+            android:textColor="#60FFFFFF"
+            android:textSize="20sp">
+
+
+        </TextView>
+
+        <TextView
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:drawablePadding="10dp"
+            android:text="cairo"
+            android:textColor="#CEFFFFFF"
+            android:textSize="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="243dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_phone_black_24dp"
+            android:drawablePadding="10dp"
+            android:text="010019291827"
+            android:textColor="#CEFFFFFF"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <Button
+
+            android:layout_width="143dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_btn1"
+            android:text="Edit"
+            android:textColor="#fff"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:src="@mipmap/ic_launcher"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:drawablePadding="5dp"
+            android:text="Add VICTIM"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold">
+
+
+        </TextView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

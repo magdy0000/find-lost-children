@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#161734">
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:paddingLeft="40dp"
+        android:background="#161734"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="right|top"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_more_horiz_black_24dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:layout_gravity="top|center|left"
+                android:layout_marginLeft="90dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                android:text="Mohamed ELHDAD"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+
+                />
+            <TextView
+                android:layout_gravity="bottom|center|left"
+                android:layout_marginLeft="90dp"
+                android:textColor="#CDFFFFFF"
+                android:layout_marginTop="8dp"
+                android:textSize="10sp"
+                android:layout_marginBottom="10dp"
+                android:text="2 May , 5:30Am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_weight="1"
+                android:src="@drawable/ic_image_black_24dp"
+                android:layout_width="match_parent"
+                android:layout_height="234dp"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:textColor="#C6FFFFFF"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:text="this chaild hasbeen missing for two weeks and we ask anyone how know or found him to inform me"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <FrameLayout
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="hesham mohamed"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:layout_gravity="left|center"
+                android:textStyle="bold"
+                android:drawableRight="@drawable/ic_brightness_1_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_marginLeft="200dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="right|center"
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_btn1"
+                android:text="DETALIS"
+                android:textColor="#fff"
+                android:textSize="20sp"
+
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

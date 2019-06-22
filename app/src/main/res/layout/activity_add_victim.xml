@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#161734"
+    tools:context=".Activities.AddVictimActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:background="#161734"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <FrameLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="COMPLETE INFORMATION"
+
+                android:textColor="#CEC7C7"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/ic_launcher">
+
+            </ImageButton>
+        </FrameLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="110dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@mipmap/ic_launcher">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@mipmap/ic_launcher">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="94dp"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@mipmap/ic_launcher">
+
+        </ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="00dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_edittext1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_edittext1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="CITY"
+            android:inputType="textPersonName"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_edittext1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="AGE"
+            android:inputType="textPersonName"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/background_edittext1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="NUMBER"
+            android:inputType="textPersonName"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:background="@drawable/background_edittext1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="DESCRIPTION"
+            android:inputType="textPersonName"
+            android:textStyle="bold" />
+        6
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ic_launcher" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

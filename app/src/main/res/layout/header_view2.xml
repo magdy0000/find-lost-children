@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#161734"
+    android:orientation="vertical"
+
+    android:paddingLeft="35dp"
+    android:paddingTop="30dp"
+    android:paddingRight="35dp">
+
+    <EditText
+
+        android:id="@+id/editText4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="FULL NAME"
+        android:inputType="text"
+        android:paddingBottom="15sp"
+        android:textColorHint="#E4E7E4E4" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="USER NAME"
+        android:inputType="text"
+        android:paddingBottom="15sp"
+        android:textColorHint="#E4E7E4E4" />
+
+    <EditText
+        android:id="@+id/editText6"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="E-MAIL"
+        android:inputType="textEmailAddress"
+        android:paddingBottom="15sp"
+        android:textColorHint="#E4E7E4E4" />
+
+    <EditText
+        android:id="@+id/editText7"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
+        android:paddingBottom="15sp"
+        android:textColorHint="#E4E7E4E4" />
+
+    <EditText
+        android:id="@+id/editText2"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#fff"
+        android:ems="10"
+        android:hint="RE-PASSWORD"
+        android:inputType="textPassword"
+        android:paddingBottom="15sp"
+        android:textColorHint="#E4E7E4E4" />
+
+
+</LinearLayout>
+
+
+
+

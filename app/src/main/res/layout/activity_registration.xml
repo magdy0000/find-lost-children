@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RegistrationActivity">
+
+    <ImageView
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="MissingConstraints"/>
+    <LinearLayout
+
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="260dp"
+        android:layout_width="320sp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:hint="FULL NAME"
+            android:paddingBottom="15sp"
+            android:textColorHint="#E4E7E4E4"
+            android:id="@+id/editText4"
+            android:backgroundTint="#fff"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:hint="USER NAME"
+            android:paddingBottom="15sp"
+            android:textColorHint="#E4E7E4E4"
+            android:id="@+id/editText5"
+            android:backgroundTint="#fff"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_marginTop="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:hint="E-MAIL"
+            android:paddingBottom="15sp"
+            android:textColorHint="#E4E7E4E4"
+            android:id="@+id/editText6"
+            android:backgroundTint="#fff"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_marginTop="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:hint="PASSWORD"
+            android:paddingBottom="15sp"
+            android:textColorHint="#E4E7E4E4"
+            android:id="@+id/editText7"
+            android:backgroundTint="#fff"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_marginTop="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:hint="RE-PASSWORD"
+            android:paddingBottom="15sp"
+            android:textColorHint="#E4E7E4E4"
+            android:id="@+id/editText2"
+            android:backgroundTint="#fff"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/background_btn1"
+            android:text="SIGN UP"
+            android:textColor="#fff"
+            android:textSize="30sp"
+
+            />
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:text="I Have Account ,"
+                android:textColor="#fff"
+                android:textSize="18sp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:text="Login Now !"
+                android:textColor="#DABD1B"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
+
+
+
+
