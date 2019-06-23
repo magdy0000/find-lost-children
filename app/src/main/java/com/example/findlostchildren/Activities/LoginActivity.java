@@ -41,14 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         definitions();
         seadDataAuto();
         onClick();
-
-
-
     }
 
 
@@ -117,10 +112,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()){
 
-                        startActivity(new Intent(LoginActivity.this , MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this , AddVictimActivity.class));
                         finish();
-
-
 
                     }else {
                         progressBar.setVisibility(View.GONE);

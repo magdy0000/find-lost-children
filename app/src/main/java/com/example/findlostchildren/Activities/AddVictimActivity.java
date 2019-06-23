@@ -20,14 +20,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -57,10 +64,12 @@ public class AddVictimActivity extends AppCompatActivity {
     EditText victimDescriptionEt;
     @BindView(R.id.add_victim_btn)
     ImageView addVictimBtn;
+    @BindView(R.id.source_name_et)
+    EditText sourceNameEt;
 
     private Uri imageUri;
     private ArrayList<String> imagesUrl;
-    private String name, city, age, number, description;
+    private String sourceName, name, city, age, number, description;
 
     //Firebase Database
     private FirebaseDatabase database;
@@ -98,13 +107,22 @@ public class AddVictimActivity extends AppCompatActivity {
     }
 
     private void saveVictim() {
+        String postTime = Calendar.DAY_OF_MONTH + "/" + Calendar.MONTH + "/" + Calendar.YEAR + " at " + Calendar.MINUTE + ":" + Calendar.HOUR;
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userId = user.getUid();
+
+        String deviceToken = FirebaseInstanceId.getInstance().getToken();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Victims");
+
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Adding Victim");
         progressDialog.setMessage("Please Wait.....");
         progressDialog.show();
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child("Victims");
-        VictimModel newVictim = new VictimModel(imagesUrl, name, city, age, number, description);
+
+        VictimModel newVictim = new VictimModel(userId, sourceName, postTime, imagesUrl, name, city, age, number, description, deviceToken);
         databaseReference.push().setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -125,9 +143,10 @@ public class AddVictimActivity extends AppCompatActivity {
             Toast.makeText(this, "Please Select Victim Photo", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (!InputValidator.victimValidation(getApplicationContext(), victimNameEt, victimCityEt, victimAgeEt, victimNumberEt, victimDescriptionEt))
+        if (!InputValidator.victimValidation(getApplicationContext(), sourceNameEt, victimNameEt, victimCityEt, victimAgeEt, victimNumberEt, victimDescriptionEt))
             return false;
 
+        sourceName = sourceNameEt.getText().toString();
         name = victimNameEt.getText().toString();
         city = victimCityEt.getText().toString();
         age = victimAgeEt.getText().toString().trim();

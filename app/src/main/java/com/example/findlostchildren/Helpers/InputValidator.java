@@ -64,14 +64,19 @@ public class InputValidator {
         return true;
     }
 
-    public static boolean victimValidation(Context context, EditText victimNameET, EditText victimCityET, EditText victimAgeET, EditText victimBNumberET, EditText victimDescritionET) {
+    public static boolean victimValidation(Context context, EditText sourceNameET, EditText victimNameET, EditText victimCityET, EditText victimAgeET, EditText victimBNumberET, EditText victimDescritionET) {
+        String sourceName = sourceNameET.getText().toString();
         String name = victimNameET.getText().toString();
         String city = victimCityET.getText().toString();
         String age = victimAgeET.getText().toString().trim();
         String number = victimBNumberET.getText().toString().trim();
         String description = victimDescritionET.getText().toString();
 
-        if (name.isEmpty() || city.isEmpty() || age.isEmpty() || number.isEmpty() || number.length() != 11 || description.isEmpty()) {
+        if (sourceName.isEmpty() || name.isEmpty() || city.isEmpty() || age.isEmpty() || number.isEmpty() || number.length() != 11 || description.isEmpty()) {
+
+            if (sourceName.isEmpty())
+                victimNameET.setError("Please Enter Your Name");
+
             if (name.isEmpty())
                 victimNameET.setError("Please Enter Victim Name");
 

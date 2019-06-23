@@ -105,6 +105,18 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/source_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/background_edittext1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Your Name"
+                    android:inputType="textPersonName"
+                    android:textStyle="bold" />
+
+                <EditText
                     android:id="@+id/victim_name_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -112,7 +124,7 @@
                     android:background="@drawable/background_edittext1"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="Name"
+                    android:hint="Victim Name"
                     android:inputType="textPersonName"
                     android:textStyle="bold" />
 
