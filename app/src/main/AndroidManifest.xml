@@ -18,7 +18,7 @@
         <activity android:name=".Activities.CompleteInfoActivity" />
         <activity android:name=".Activities.CardInfoActivity" />
         <activity android:name=".Activities.AddVictimActivity" />
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

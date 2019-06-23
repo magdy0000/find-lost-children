@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#161734"
     tools:context=".Activities.AddVictimActivity">
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,150 +29,156 @@
         android:layout_gravity="top|center"
         android:background="#161734"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme">
-
-        <FrameLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="COMPLETE INFORMATION"
-
-                android:textColor="#CEC7C7"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/ic_launcher">
-
-            </ImageButton>
-        </FrameLayout>
-
-    </android.support.v7.widget.Toolbar>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="110dp"
-        android:orientation="horizontal">
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:src="@mipmap/ic_launcher">
+            android:layout_gravity="center|left"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/back">
 
         </ImageView>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:src="@mipmap/ic_launcher">
-
-        </ImageView>
-
-        <ImageView
-            android:layout_width="94dp"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:src="@mipmap/ic_launcher">
-
-        </ImageView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="00dp"
-        android:orientation="vertical">
-
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/background_edittext1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Name"
-            android:inputType="textPersonName"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText8"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/background_edittext1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="CITY"
-            android:inputType="textPersonName"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText9"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/background_edittext1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="AGE"
-            android:inputType="textPersonName"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText10"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/background_edittext1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="NUMBER"
-            android:inputType="textPersonName"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="74dp"
-            android:background="@drawable/background_edittext1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="DESCRIPTION"
-            android:inputType="textPersonName"
-            android:textStyle="bold" />
-        6
-
-        <ImageButton
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:src="@mipmap/ic_launcher" />
+            android:gravity="center"
+            android:text="@string/add_victim"
+            android:textColor="#CEC7C7"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/add_image_btn_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/victim_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:src="@drawable/user" />
+
+                <ImageView
+                    android:id="@+id/add_image_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/more_img">
+
+                </ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="65dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/victim_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/background_edittext1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/victim_city_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/background_edittext1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="CITY"
+                    android:inputType="textPersonName"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/victim_age_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/background_edittext1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="AGE"
+                    android:inputType="number"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/victim_number_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/background_edittext1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="NUMBER"
+                    android:inputType="number"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/victim_description_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_edittext1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="DESCRIPTION"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/add_victim_btn"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:src="@drawable/add_icon" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-</FrameLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

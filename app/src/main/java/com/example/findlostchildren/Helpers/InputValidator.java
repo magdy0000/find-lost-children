@@ -13,9 +13,9 @@ public class InputValidator {
         String email = emailET.getText().toString().trim();
         String password = passwordET.getText().toString().trim();
         String confirmPassword = confirmPasswordET.getText().toString().trim();
-        if (name.isEmpty() || email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() || password.isEmpty()  || confirmPassword.isEmpty() || password.length() < 6 || !password.equals(confirmPassword)) {
+        if (name.isEmpty() || email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() || password.isEmpty() || confirmPassword.isEmpty() || password.length() < 6 || !password.equals(confirmPassword)) {
 
-            if(name.isEmpty())
+            if (name.isEmpty())
                 //userName.setError("يرجي كتابه أسم المستخدم");
                 Toast.makeText(context, "يرجي كتابة اسم المستخدم", Toast.LENGTH_LONG).show();
 
@@ -42,6 +42,7 @@ public class InputValidator {
         }
         return true;
     }
+
     public static boolean signInValidation(Context context, EditText emailET, EditText passwordET) {
 
         String email = emailET.getText().toString().trim();
@@ -62,35 +63,36 @@ public class InputValidator {
         }
         return true;
     }
-    public static boolean emailValidation(Context context, EditText emailET){
 
-        String email = emailET.getText().toString().trim();
+    public static boolean victimValidation(Context context, EditText victimNameET, EditText victimCityET, EditText victimAgeET, EditText victimBNumberET, EditText victimDescritionET) {
+        String name = victimNameET.getText().toString();
+        String city = victimCityET.getText().toString();
+        String age = victimAgeET.getText().toString().trim();
+        String number = victimBNumberET.getText().toString().trim();
+        String description = victimDescritionET.getText().toString();
 
-        if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() ) {
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                Toast.makeText(context, "البريد الألكتروني غير صالح", Toast.LENGTH_LONG).show();
+        if (name.isEmpty() || city.isEmpty() || age.isEmpty() || number.isEmpty() || number.length() != 11 || description.isEmpty()) {
+            if (name.isEmpty())
+                victimNameET.setError("Please Enter Victim Name");
 
-            if (email.isEmpty())
-                Toast.makeText(context, "يرجي كتابة البريد الألكتروني", Toast.LENGTH_LONG).show();
+            if (city.isEmpty())
+                victimCityET.setError("Please Enter Victim City");
+
+            if (age.isEmpty())
+                victimAgeET.setError("Please Enter Victim Age");
+
+            if (number.length() != 11)
+                victimBNumberET.setError("Please Enter Valid Phone Number");
+
+            if (number.isEmpty())
+                victimBNumberET.setError("Please Enter Victim Number Number");
+            
+            if (description.isEmpty())
+                victimDescritionET.setError("Please Enter Victim Description");
 
             return false;
         }
         return true;
-    }
-    public static boolean messageValidation(Context context, EditText messageET, EditText titleET){
-        String message = messageET.getText().toString();
-        String title = titleET.getText().toString();
 
-        if(title.isEmpty() || message.isEmpty()) {
-
-            if (title.isEmpty())
-                titleET.setError("يرجي أدخال العنوان");
-
-            if (message.isEmpty())
-                messageET.setError("يرجي أدخال المحتوي");
-
-            return false;
-        }
-        return true;
     }
 }

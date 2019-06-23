@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "991434850490-vial241rvbhm9ifkof753av6635760p3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.findlostchildren",
+            "certificate_hash": "fe66fd2d6825474d69611cc1043f2c5f2c1dd4cd"
+          }
+        },
+        {
           "client_id": "991434850490-d8e7damuh2u9mvm430dshs692fp6bu3j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
