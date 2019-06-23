@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()){
 
-                        startActivity(new Intent(LoginActivity.this , AddVictimActivity.class));
+                        startActivity(new Intent(LoginActivity.this , ProfileActivity.class));
                         finish();
 
                     }else {

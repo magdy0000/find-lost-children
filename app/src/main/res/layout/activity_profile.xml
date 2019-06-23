@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGray"
+    android:background="#161734"
     tools:context=".Activities.ProfileActivity">
 
 
@@ -22,23 +22,25 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
+
         tools:layout_editor_absoluteY="123dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_imageView"
             android:layout_width="95dp"
             android:layout_height="87dp"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/user"
 
             />
 
         <TextView
+            android:id="@+id/name_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="7dp"
             android:drawablePadding="5dp"
-            android:text="MOHAMED EL_HDAD"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -47,11 +49,11 @@
         </TextView>
 
         <TextView
+            android:id="@+id/about_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="7dp"
-            android:text="founder ultras fci \nfounder ultras fci \nfounder ultras fci \nfounder ultras fci"
             android:textColor="#60FFFFFF"
             android:textSize="20sp">
 
@@ -59,18 +61,19 @@
         </TextView>
 
         <TextView
+            android:id="@+id/city_textView"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:drawablePadding="10dp"
-            android:text="cairo"
             android:textColor="#CEFFFFFF"
             android:textSize="30sp">
 
         </TextView>
 
         <TextView
+            android:id="@+id/phone_textView"
             android:layout_width="243dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -78,14 +81,13 @@
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_phone_black_24dp"
             android:drawablePadding="10dp"
-            android:text="010019291827"
             android:textColor="#CEFFFFFF"
             android:textSize="20sp">
 
         </TextView>
 
         <Button
-
+            android:id="@+id/edit_button"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -96,11 +98,12 @@
             android:textSize="30sp" />
 
         <ImageView
+            android:id="@+id/add_victim_button"
             android:layout_width="49dp"
             android:layout_height="49dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/more_img"
 
             />
 
