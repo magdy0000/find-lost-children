@@ -9,7 +9,6 @@
         android:textStyle="bold"
         android:background="#161734"
         android:textAllCaps="true"
-
         android:textSize="20sp"
         android:textColor="#fff"
         android:text="Acount information"
