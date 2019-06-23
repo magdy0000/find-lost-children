@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.findlostchildren"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -54,6 +54,8 @@ dependencies {
     //Circle Image
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    //dimns
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
 
 }

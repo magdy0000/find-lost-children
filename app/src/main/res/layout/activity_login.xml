@@ -7,7 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activities.LoginActivity"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroud_login"
@@ -24,7 +23,7 @@
 
 
     <ImageView
-        android:src="@drawable/gradient_layer"
+        android:background="@drawable/gradient_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -55,6 +54,7 @@
         android:orientation="vertical">
 
         <EditText
+
             android:id="@+id/enter_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +62,7 @@
             android:layout_weight="1"
             android:backgroundTint="#fff"
             android:ems="10"
+            android:textColor="@color/white"
             android:hint="E-mail"
             android:inputType="text"
             android:paddingBottom="15sp"
@@ -76,6 +77,7 @@
             android:layout_weight="1"
             android:backgroundTint="#fff"
             android:ems="10"
+            android:textColor="@color/white"
             android:hint="PASSWORD"
             android:inputType="textPassword"
             android:paddingBottom="15sp"
