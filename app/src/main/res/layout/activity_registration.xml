@@ -72,19 +72,7 @@
             android:layout_weight="1"/>
 
 
-        <EditText
-            android:layout_marginTop="10dp"
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:ems="10"
-            android:hint="city"
-            android:paddingBottom="15sp"
-            android:textColorHint="#E4E7E4E4"
-            android:id="@+id/edit_city"
-            android:backgroundTint="#fff"
-            android:layout_weight="1"/>
         <EditText
             android:layout_marginTop="10dp"
 

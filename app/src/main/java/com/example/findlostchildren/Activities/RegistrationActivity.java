@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegistrationActivity extends AppCompatActivity {
 
     EditText editTextOfemail, editTextOfpassword, editTextOfRepassword,editTextOfUserName
-            , editTextOfcity , editTextOfphone ;
+             , editTextOfphone ;
 
 
     Button btn_register;
@@ -35,7 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
     LinearLayout parent ;
     ProgressBar progressBar ;
 
-    String email ,  password , repassword , userName  , city , phone ;
+    String email ,  password , repassword , userName   , phone ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         editTextOfphone  = findViewById(R.id.edit_phone);
 
-        editTextOfcity = findViewById(R.id.edit_city);
+
 
         parent = findViewById(R.id.parentOfRejester);
 
@@ -85,7 +85,7 @@ public class RegistrationActivity extends AppCompatActivity {
          repassword = editTextOfRepassword.getText().toString().trim();
          userName = editTextOfUserName.getText().toString().trim();
          phone = editTextOfphone.getText().toString().trim();
-         city = editTextOfcity.getText().toString().trim();
+
 
         if (userName.equals("")){
             editTextOfUserName.setError("Required");
@@ -95,10 +95,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         }else if(email.equals("")){
             editTextOfemail.setError("Required");
-
-
-        }else if (city.equals("")){
-             editTextOfcity.setError("Required");
 
 
         }else if(phone.equals("")){
@@ -177,7 +173,7 @@ public class RegistrationActivity extends AppCompatActivity {
         model.setEmail(email);
         model.setUserName(userName);
         model.setUserID(auth.getCurrentUser().getUid().trim());
-        model.setCity(city);
+
         model.setPhone(phone);
 
         ref.child("Users").child(auth.getCurrentUser().getUid()).setValue(model);
