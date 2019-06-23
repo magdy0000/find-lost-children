@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    //ll
+
 
     private void onClick (){
 

@@ -7,9 +7,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.RegistrationActivity"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/backgroud_login"
     android:layout_height="match_parent"
     >
+
+    <ImageView
+        android:src="@drawable/gradient_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ProgressBar
         android:id="@+id/progressOfRejester"
@@ -31,8 +36,9 @@
 
     <ImageView
         android:layout_marginTop="50dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/logo"
         android:layout_width="150dp"
+
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         tools:ignore="MissingConstraints"/>
