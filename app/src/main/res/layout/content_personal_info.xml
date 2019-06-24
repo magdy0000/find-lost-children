@@ -65,8 +65,8 @@
     <EditText
         android:id="@+id/edit_about"
         android:layout_width="316dp"
-        android:layout_height="74dp"
-        android:background="@drawable/background_edittext1"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
         android:ems="10" />
 
 

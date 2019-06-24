@@ -44,8 +44,6 @@ public class EditProfileActivity extends AppCompatActivity {
     ImageView arrowRightImageView;
     @BindView(R.id.edit_userName)
     EditText editUserName;
-    @BindView(R.id.edit_email)
-    EditText editEmail;
     @BindView(R.id.edit_phone_number)
     EditText editPhoneNumber;
     @BindView(R.id.button_reset_password)
@@ -77,6 +75,8 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    String userName , phone , city , age , facebookLink , about;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +90,15 @@ public class EditProfileActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        userName = editUserName.getText().toString();
+        phone = editPhoneNumber.getText().toString().trim();
+        city = editCity.getText().toString();
+        age = editAge.getText().toString().trim();
+        facebookLink = editFacebookLink.getText().toString();
+        about = editAbout.getText().toString();
+
+
     }
 
     @OnClick({R.id.add_image_btn, R.id.arrow_right_imageView, R.id.button_reset_password, R.id.arrow_right_imageView2, R.id.done_imaageView})
@@ -184,7 +193,35 @@ public class EditProfileActivity extends AppCompatActivity {
             });
 
         }
+        if (!userName.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("userName").setValue(userName);
+        }
+
+        if (!phone.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("phone").setValue(phone);
+        }
+
+        if (!city.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("city").setValue(city);
+        }
+
+        if (!city.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("city").setValue(city);
+        }
+
+        if (!age.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("age").setValue(age);
+        }
+
+        if (!facebookLink.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("facebookLink").setValue(facebookLink);
+        }
+
+        if (!about.isEmpty()){
+            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("about").setValue(about);
+        }
         progressDialog.dismiss();
+
 
 
 
