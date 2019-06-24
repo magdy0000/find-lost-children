@@ -1,6 +1,7 @@
 package com.example.findlostchildren.Constrollers.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.findlostchildren.Activities.VictimActivity;
 import com.example.findlostchildren.Constrollers.Holders.VictimHolder;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
@@ -24,6 +26,9 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
         this.context = context;
         this.victimModels = victimModels;
     }
+    private Context getContext() {
+        return context;
+    }
 
     @NonNull
     @Override
@@ -34,7 +39,7 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull VictimHolder holder, int position) {
-        VictimModel victimModel  = victimModels.get(position);
+        final VictimModel victimModel  = victimModels.get(position);
         holder.sourceName.setText(victimModel.getSourceName());
         holder.postTime.setText(victimModel.getPostTime());
         holder.victimDescription.setText(victimModel.getDescription());
@@ -43,6 +48,18 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Details Button Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Picasso.with(context)
+                .load(victimModel.getImagesURL())
+                .into(holder.victimImage);
+
+        holder.detalisBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VictimActivity.class);
+                intent.putExtra("ID", victimModel.getVictimId());
+                getContext().startActivity(intent);
             }
         });
     }

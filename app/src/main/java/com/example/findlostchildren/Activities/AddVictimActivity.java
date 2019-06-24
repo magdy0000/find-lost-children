@@ -22,19 +22,19 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -69,6 +69,7 @@ public class AddVictimActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private ArrayList<String> imagesUrl;
+    private String imageUrl;
     private String sourceName, name, city, age, number, description;
 
     //Firebase Database
@@ -94,10 +95,13 @@ public class AddVictimActivity extends AppCompatActivity {
             case R.id.back_btn:
                 break;
             case R.id.victim_image:
-                selectImage();
+                if(imageUrl == null)
+                    selectImage();
+                else
+                    Toast.makeText(this, "You select photo before", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_image_btn:
-                addImage();
+                    addImage();
                 break;
             case R.id.add_victim_btn:
                 if (getInputData())
@@ -107,7 +111,8 @@ public class AddVictimActivity extends AppCompatActivity {
     }
 
     private void saveVictim() {
-        String postTime = Calendar.DAY_OF_MONTH + "/" + Calendar.MONTH + "/" + Calendar.YEAR + " at " + Calendar.MINUTE + ":" + Calendar.HOUR;
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+        String postTime = df.format(Calendar.getInstance().getTime());
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         String userId = user.getUid();
@@ -116,18 +121,21 @@ public class AddVictimActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Victims");
 
+        String victimId = databaseReference.push().getKey();
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Adding Victim");
         progressDialog.setMessage("Please Wait.....");
         progressDialog.show();
 
-        VictimModel newVictim = new VictimModel(userId, sourceName, postTime, imagesUrl, name, city, age, number, description, deviceToken);
-        databaseReference.push().setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
+        VictimModel newVictim = new VictimModel(userId, victimId, sourceName, postTime, imageUrl, name, city, age, number, description, deviceToken);
+        databaseReference.child(userId).child(victimId).setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     progressDialog.dismiss();
+                    startActivity(new Intent(AddVictimActivity.this, HomeActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(AddVictimActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
@@ -139,7 +147,7 @@ public class AddVictimActivity extends AppCompatActivity {
     }
 
     private boolean getInputData() {
-        if (imagesUrl.isEmpty()) {
+        if (imageUrl.isEmpty()) {
             Toast.makeText(this, "Please Select Victim Photo", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -200,7 +208,7 @@ public class AddVictimActivity extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             progressDialog.dismiss();
                             String imageURL = uri.toString();
-                            imagesUrl.add(imageURL);
+                            imageUrl = imageURL;
                             imageUri = null;
                         }
                     });

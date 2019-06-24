@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class VictimModel {
 
-    private ArrayList<String> imagesURL;
-    private String userId, sourceName, postTime, name, city, age, number, description, deviceToken;
+    private String imagesURL;
+    private String userId, victimId, sourceName, postTime, name, city, age, number, description, deviceToken;
 
     public VictimModel() {
 
     }
 
-    public VictimModel(String userId, String sourceName, String postTime, ArrayList<String> imagesURL, String name, String city, String age, String number, String description, String deviceToken) {
+    public VictimModel(String userId, String victimId, String sourceName, String postTime, String imagesURL, String name, String city, String age, String number, String description, String deviceToken) {
         this.userId = userId;
+        this.victimId = victimId;
         this.sourceName = sourceName;
         this.postTime = postTime;
         this.imagesURL = imagesURL;
@@ -32,6 +33,14 @@ public class VictimModel {
         this.userId = userId;
     }
 
+    public String getVictimId() {
+        return victimId;
+    }
+
+    public void setVictimId(String victimId) {
+        this.victimId = victimId;
+    }
+
     public String getSourceName() {
         return sourceName;
     }
@@ -48,11 +57,11 @@ public class VictimModel {
         this.postTime = postTime;
     }
 
-    public ArrayList<String> getImagesURL() {
+    public String getImagesURL() {
         return imagesURL;
     }
 
-    public void setImagesURL(ArrayList<String> imagesURL) {
+    public void setImagesURL(String imagesURL) {
         this.imagesURL = imagesURL;
     }
 

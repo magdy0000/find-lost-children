@@ -2,8 +2,10 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="5dp"
-    android:background="#161734">
+    android:background="#161734"
+    app:layout_goneMarginBottom="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,9 +22,9 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/source_image_victim_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/user" />
 
             <TextView
                 android:id="@+id/source_name_victim_item"
@@ -31,7 +33,6 @@
                 android:layout_gravity="top|center|left"
                 android:layout_marginLeft="90dp"
                 android:layout_marginTop="8dp"
-                android:text="Mohamed ELHDAD"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -44,9 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center|left"
                 android:layout_marginLeft="90dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
-                android:text="2 May , 5:30Am"
                 android:textColor="#CDFFFFFF"
                 android:textSize="10sp"
 
@@ -56,28 +55,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/victim_image_victim_item"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="250dp"
+                android:scaleType="centerCrop" />
 
-                <ImageView
-                    android:id="@+id/victim_image_victim_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:src="@drawable/ic_image_black_24dp" />
-
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/victim_image_slider"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@android:color/darker_gray"
-                    android:scaleType="centerCrop" />
-
-
-            </RelativeLayout>
 
             <TextView
                 android:id="@+id/victim_name_victim_item"
@@ -97,9 +83,9 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
-                android:text=""
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -122,6 +108,7 @@
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="20sp" />
+
         </FrameLayout>
     </LinearLayout>
 

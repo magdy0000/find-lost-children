@@ -14,7 +14,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class VictimHolder extends RecyclerView.ViewHolder {
 
-    public ViewPager imageSlider;
     public CircleImageView sourceImage;
     public TextView sourceName, postTime, victimDescription, victimName;
     public ImageView victimImage;
@@ -29,6 +28,5 @@ public class VictimHolder extends RecyclerView.ViewHolder {
         victimName = view.findViewById(R.id.victim_name_victim_item);
         victimImage = view.findViewById(R.id.victim_image_victim_item);
         detalisBtn = view.findViewById(R.id.details_btn_victim_item);
-        imageSlider = view.findViewById(R.id.victim_image_slider);
     }
 }
