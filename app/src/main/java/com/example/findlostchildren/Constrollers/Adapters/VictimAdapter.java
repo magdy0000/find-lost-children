@@ -56,19 +56,11 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         final String ID = victimModel.getUserId();
-        //Toast.makeText(context, "ID " + ID, Toast.LENGTH_SHORT).show();
         reference.child("Users").child(ID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.child("userName").getValue(String.class);
                 String imageURL = dataSnapshot.child("imageURL").getValue(String.class);
-                Toast.makeText(context, "ID " + ID , Toast.LENGTH_SHORT).show();
-                //Toast.makeText(context, "User Name " + name , Toast.LENGTH_SHORT).show();
-                //Toast.makeText(context, "Image URL " + imageURL , Toast.LENGTH_SHORT).show();
-                Log.d("UserInfo", "Id: " + ID);
-                Log.d("UserInfo", "userName: " + name);
-                Log.d("UserInfo", "imageURL: " + imageURL);
-                Toast.makeText(context, "Name " + name, Toast.LENGTH_SHORT).show();
 
                 if (name == null)
                     holder.sourceName.setText("User");
