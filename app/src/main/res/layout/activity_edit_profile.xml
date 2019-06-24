@@ -77,6 +77,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:weightSum="3"
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -86,13 +87,15 @@
                 android:id="@+id/account_information_view"
                 layout="@layout/header_view"
                 android:layout_weight="2"
-                android:layout_width="match_parent"
-                android:layout_gravity="left"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/back"/>
+                android:layout_width="match_parent" />
+
+            <ImageView
+                android:id="@+id/arrow_right_imageView"
+                android:layout_weight="1"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:src="@drawable/arrow_right"/>
         </LinearLayout>
 
         <View
@@ -123,6 +126,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:weightSum="3"
             android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
@@ -131,8 +135,17 @@
             <include
                 android:id="@+id/personal_information_view"
                 layout="@layout/header_personal_info"
+                android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/arrow_down_imageView"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:src="@drawable/arrow_down" />
+
 
         </LinearLayout>
 
@@ -154,7 +167,7 @@
             layout="@layout/content_personal_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/guideline_end"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/view2"  />
