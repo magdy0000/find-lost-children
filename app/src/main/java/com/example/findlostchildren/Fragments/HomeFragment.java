@@ -61,6 +61,7 @@ public class HomeFragment extends Fragment {
 
         victimRecyclerView = (RecyclerView) view.findViewById(R.id.victim_RecyclerView);
         loadingView = view.findViewById(R.id.victim_loading_view);
+        loadingView.setVisibility(View.VISIBLE);
         noDataTV = view.findViewById(R.id.no_data_tv);
 
         victimRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
