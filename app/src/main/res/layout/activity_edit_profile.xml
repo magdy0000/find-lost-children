@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/victim_image"
+                android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
@@ -141,7 +141,7 @@
 
             <ImageView
                 android:layout_weight="1"
-                android:id="@+id/arrow_down_imageView"
+                android:id="@+id/arrow_right_imageView2"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:src="@drawable/arrow_right" />

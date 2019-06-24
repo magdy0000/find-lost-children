@@ -12,20 +12,9 @@
     android:paddingTop="30dp"
     android:paddingRight="35dp">
 
-    <EditText
-
-        android:id="@+id/editText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#fff"
-        android:ems="10"
-        android:hint="FULL NAME"
-        android:inputType="text"
-        android:paddingBottom="15sp"
-        android:textColorHint="#E4E7E4E4" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/edit_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -37,8 +26,7 @@
         android:textColorHint="#E4E7E4E4" />
 
     <EditText
-        android:id="@+id/editText6"
-
+        android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -50,41 +38,29 @@
         android:textColorHint="#E4E7E4E4" />
 
     <EditText
+
+        android:id="@+id/edit_phone_number"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="#fff"
         android:ems="10"
         android:hint="PHONE NUMBER"
-        android:inputType="text"
+        android:inputType="phone"
         android:paddingBottom="15sp"
         android:textColorHint="#E4E7E4E4" />
 
-    <EditText
-        android:id="@+id/editText7"
-
+    <Button
+        android:id="@+id/button_reset_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#fff"
-        android:ems="10"
-        android:hint="PASSWORD"
-        android:inputType="textPassword"
-        android:paddingBottom="15sp"
-        android:textColorHint="#E4E7E4E4" />
-
-    <EditText
-        android:id="@+id/editText2"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#fff"
-        android:ems="10"
-        android:hint="RE-PASSWORD"
-        android:inputType="textPassword"
-        android:paddingBottom="15sp"
-        android:textColorHint="#E4E7E4E4" />
+        android:text="Reset Password"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:background="@drawable/background_btn1"/>
 
 
 </LinearLayout>
