@@ -58,9 +58,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 victimsArrayList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    VictimModel victimModel = snapshot.getValue(VictimModel.class);
-                    victimsArrayList.add(victimModel);
-                    victimAdapter.notifyDataSetChanged();
+                    for (DataSnapshot childSnapShot: snapshot.getChildren()){
+                        VictimModel victimModel = childSnapShot.getValue(VictimModel.class);
+                        victimsArrayList.add(victimModel);
+                        victimAdapter.notifyDataSetChanged();
+                    }
                 }
                 Collections.reverse(victimsArrayList);
             }
@@ -75,9 +77,6 @@ public class HomeActivity extends AppCompatActivity {
             victimAdapter = new VictimAdapter(getApplicationContext(), victimsArrayList);
             victimRecyclerView.setAdapter(victimAdapter);
             loadingView.setVisibility(View.GONE);
-        }else{
-            loadingView.setVisibility(View.GONE);
-            noDataTV.setVisibility(View.VISIBLE);
         }
 
     }
