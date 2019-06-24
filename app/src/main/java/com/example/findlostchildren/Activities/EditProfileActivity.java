@@ -75,7 +75,7 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
-    String userName , phone , city , age , facebookLink , about;
+    String userName, phone, city, age, facebookLink, about;
 
 
     @Override
@@ -90,14 +90,6 @@ public class EditProfileActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-        userName = editUserName.getText().toString();
-        phone = editPhoneNumber.getText().toString().trim();
-        city = editCity.getText().toString();
-        age = editAge.getText().toString().trim();
-        facebookLink = editFacebookLink.getText().toString();
-        about = editAbout.getText().toString();
-
 
     }
 
@@ -167,11 +159,18 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void saveChange() {
 
+        userName = editUserName.getText().toString();
+        phone = editPhoneNumber.getText().toString().trim();
+        city = editCity.getText().toString();
+        age = editAge.getText().toString().trim();
+        facebookLink = editFacebookLink.getText().toString();
+        about = editAbout.getText().toString();
+
         final ProgressDialog progressDialog = new ProgressDialog(EditProfileActivity.this);
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
-        if (imageUri != null){
+        if (imageUri != null) {
             final String imageName = UUID.randomUUID().toString() + ".jpg";
 
             storageReference.child("Images").child("Users").child(imageName).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -180,6 +179,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     storageReference.child("Images").child("Users").child(imageName).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+                            progressDialog.dismiss();
                             String imageURL = uri.toString();
                             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("imageURL").setValue(imageURL);
                         }
@@ -188,42 +188,37 @@ public class EditProfileActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
         }
-        if (!userName.isEmpty()){
+        if (userName != null) {
             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("userName").setValue(userName);
         }
 
-        if (!phone.isEmpty()){
+        if (phone != null) {
             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("phone").setValue(phone);
         }
 
-        if (!city.isEmpty()){
+        if (city != null) {
             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("city").setValue(city);
         }
 
-        if (!city.isEmpty()){
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("city").setValue(city);
-        }
-
-        if (!age.isEmpty()){
+        if (age != null) {
             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("age").setValue(age);
         }
 
-        if (!facebookLink.isEmpty()){
+        if (facebookLink != null) {
             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("facebookLink").setValue(facebookLink);
         }
 
-        if (!about.isEmpty()){
+        if (about != null) {
             databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("about").setValue(about);
         }
+
         progressDialog.dismiss();
-
-
-
 
     }
 }
