@@ -1,7 +1,5 @@
 package com.example.findlostchildren.Models;
 
-import java.util.ArrayList;
-
 public class VictimModel {
 
     private String imagesURL;
@@ -11,10 +9,9 @@ public class VictimModel {
 
     }
 
-    public VictimModel(String userId, String victimId, String sourceName, String postTime, String imagesURL, String name, String city, String age, String number, String description, String deviceToken) {
+    public VictimModel(String userId, String victimId, String postTime, String imagesURL, String name, String city, String age, String number, String description, String deviceToken) {
         this.userId = userId;
         this.victimId = victimId;
-        this.sourceName = sourceName;
         this.postTime = postTime;
         this.imagesURL = imagesURL;
         this.name = name;

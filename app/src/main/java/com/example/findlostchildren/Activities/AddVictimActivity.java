@@ -65,13 +65,11 @@ public class AddVictimActivity extends AppCompatActivity {
     EditText victimDescriptionEt;
     @BindView(R.id.add_victim_btn)
     ImageView addVictimBtn;
-    @BindView(R.id.source_name_et)
-    EditText sourceNameEt;
 
     private Uri imageUri;
     private ArrayList<String> imagesUrl;
     private String imageUrl;
-    private String sourceName, name, city, age, number, description;
+    private String name, city, age, number, description;
 
     //Firebase Database
     private FirebaseDatabase database;
@@ -112,51 +110,14 @@ public class AddVictimActivity extends AppCompatActivity {
         }
     }
 
-    private void saveVictim() {
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm aa");
-        String postTime = df.format(Calendar.getInstance().getTime());
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String userId = user.getUid();
-
-        String deviceToken = FirebaseInstanceId.getInstance().getToken();
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child("Victims");
-
-        String victimId = databaseReference.push().getKey();
-
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Adding Victim");
-        progressDialog.setMessage("Please Wait.....");
-        progressDialog.show();
-
-        VictimModel newVictim = new VictimModel(userId, victimId, sourceName, postTime, imageUrl, name, city, age, number, description, deviceToken);
-        databaseReference.child(userId).child(victimId).setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    progressDialog.dismiss();
-                    startActivity(new Intent(AddVictimActivity.this, MainActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(AddVictimActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }
-
-            }
-        });
-
-    }
-
     private boolean getInputData() {
         if (imageUrl.isEmpty()) {
             Toast.makeText(this, "Please Select Victim Photo", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (!InputValidator.victimValidation(getApplicationContext(), sourceNameEt, victimNameEt, victimCityEt, victimAgeEt, victimNumberEt, victimDescriptionEt))
+        if (!InputValidator.victimValidation(getApplicationContext(), victimNameEt, victimCityEt, victimAgeEt, victimNumberEt, victimDescriptionEt))
             return false;
 
-        sourceName = sourceNameEt.getText().toString();
         name = victimNameEt.getText().toString();
         city = victimCityEt.getText().toString();
         age = victimAgeEt.getText().toString().trim();
@@ -225,6 +186,42 @@ public class AddVictimActivity extends AppCompatActivity {
 
 
         }
+
+    }
+    private void saveVictim() {
+
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm aa");
+        String postTime = df.format(Calendar.getInstance().getTime());
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userId = user.getUid();
+
+        String deviceToken = FirebaseInstanceId.getInstance().getToken();
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference().child("Victims");
+
+        String victimId = databaseReference.push().getKey();
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Adding Victim");
+        progressDialog.setMessage("Please Wait.....");
+        progressDialog.show();
+
+        VictimModel newVictim = new VictimModel(userId, victimId, postTime, imageUrl, name, city, age, number, description, deviceToken);
+        databaseReference.child(userId).child(victimId).setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    progressDialog.dismiss();
+                    startActivity(new Intent(AddVictimActivity.this, MainActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(AddVictimActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
+
+            }
+        });
 
     }
 }
