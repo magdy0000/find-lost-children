@@ -40,11 +40,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_home:
                         loadFragment(new HomeFragment());
                         break;
-                    case R.id.action_profile:
-                        loadFragment(new ProfileFragment());
+                    case R.id.action_myVictims:
+                        //load your fragment
                         break;
                     case R.id.action_search:
                         loadFragment(new SearchFragment());
+                        break;
+                    case R.id.action_profile:
+                        loadFragment(new ProfileFragment());
                         break;
                     case R.id.action_notification:
                         loadFragment(new NotificationFragment());
