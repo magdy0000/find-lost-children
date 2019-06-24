@@ -39,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         victimRecyclerView = (RecyclerView) findViewById(R.id.victim_RecyclerView);
         loadingView = findViewById(R.id.victim_loading_view);
         noDataTV = findViewById(R.id.no_data_tv);
@@ -57,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 victimsArrayList.clear();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot childSnapShot: snapshot.getChildren()){
                         VictimModel victimModel = childSnapShot.getValue(VictimModel.class);

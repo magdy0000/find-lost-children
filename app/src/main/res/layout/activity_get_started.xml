@@ -16,7 +16,7 @@
        android:layout_centerHorizontal="true"
         android:src="@drawable/logo"
 
-        android:layout_marginTop="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_140sdp"
         tools:ignore="MissingConstraints" />
 
     <Button
