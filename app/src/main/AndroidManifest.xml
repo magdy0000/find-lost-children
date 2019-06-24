@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.EditProfileActivity"></activity>
-        <activity android:name=".Activities.GetStarted"></activity>
-        <activity android:name=".Activities.SearchActivity" />
-        <activity android:name=".Activities.SettingActivity" />
-        <activity android:name=".Activities.RegistrationActivity"></activity>
-        <activity android:name=".Activities.ProfileActivity">
+        <activity android:name=".Activities.GetStarted">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.SearchActivity" />
+        <activity android:name=".Activities.SettingActivity" />
+        <activity android:name=".Activities.RegistrationActivity"></activity>
+        <activity android:name=".Activities.ProfileActivity">
+
         </activity>
         <activity android:name=".Activities.LoginActivity"></activity>
         <activity android:name=".Activities.HomeActivity" />
