@@ -75,6 +75,7 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    private String userId, userEmail;
     String userName, phone, city, age, facebookLink, about;
 
 
@@ -90,6 +91,9 @@ public class EditProfileActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        user = mAuth.getCurrentUser();
+        userId = user.getUid();
+        userEmail = user.getEmail();
 
     }
 
@@ -140,10 +144,7 @@ public class EditProfileActivity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
-
-        String email = "a@hmail.com"; //user.getEmail();
-
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -181,7 +182,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             progressDialog.dismiss();
                             String imageURL = uri.toString();
-                            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("imageURL").setValue(imageURL);
+                            databaseReference.child("Users").child(userId).child("imageURL").setValue(imageURL);
                         }
                     });
                 }
@@ -195,27 +196,27 @@ public class EditProfileActivity extends AppCompatActivity {
 
         }
         if (userName != null) {
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("userName").setValue(userName);
+            databaseReference.child("Users").child(userId).child("userName").setValue(userName);
         }
 
         if (phone != null) {
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("phone").setValue(phone);
+            databaseReference.child("Users").child(userId).child("phone").setValue(phone);
         }
 
         if (city != null) {
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("city").setValue(city);
+            databaseReference.child("Users").child(userId).child("city").setValue(city);
         }
 
         if (age != null) {
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("age").setValue(age);
+            databaseReference.child("Users").child(userId).child("age").setValue(age);
         }
 
         if (facebookLink != null) {
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("facebookLink").setValue(facebookLink);
+            databaseReference.child("Users").child(userId).child("facebookLink").setValue(facebookLink);
         }
 
         if (about != null) {
-            databaseReference.child("Users").child("gzfUbSh1hBUJlNkFj5bM46SwRiG3").child("about").setValue(about);
+            databaseReference.child("Users").child(userId).child("about").setValue(about);
         }
 
         progressDialog.dismiss();
