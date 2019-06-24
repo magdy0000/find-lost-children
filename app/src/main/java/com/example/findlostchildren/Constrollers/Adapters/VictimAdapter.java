@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,13 @@ import com.example.findlostchildren.Activities.VictimActivity;
 import com.example.findlostchildren.Constrollers.Holders.VictimHolder;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 
@@ -22,10 +29,15 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
     private Context context;
     private List<VictimModel> victimModels;
 
+    //Databae
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+
     public VictimAdapter(Context context, List<VictimModel> victimModels) {
         this.context = context;
         this.victimModels = victimModels;
     }
+
     private Context getContext() {
         return context;
     }
@@ -38,9 +50,48 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VictimHolder holder, int position) {
-        final VictimModel victimModel  = victimModels.get(position);
-        holder.sourceName.setText(victimModel.getSourceName());
+    public void onBindViewHolder(@NonNull final VictimHolder holder, int position) {
+        final VictimModel victimModel = victimModels.get(position);
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
+        final String ID = victimModel.getUserId();
+        //Toast.makeText(context, "ID " + ID, Toast.LENGTH_SHORT).show();
+        reference.child("Users").child(ID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("userName").getValue(String.class);
+                String imageURL = dataSnapshot.child("imageURL").getValue(String.class);
+                Toast.makeText(context, "ID " + ID , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "User Name " + name , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Image URL " + imageURL , Toast.LENGTH_SHORT).show();
+                Log.d("UserInfo", "Id: " + ID);
+                Log.d("UserInfo", "userName: " + name);
+                Log.d("UserInfo", "imageURL: " + imageURL);
+                Toast.makeText(context, "Name " + name, Toast.LENGTH_SHORT).show();
+
+                if (name == null)
+                    holder.sourceName.setText("User");
+                else
+                    holder.sourceName.setText(name);
+
+                if (imageURL == null) {
+                    Picasso.with(context)
+                            .load(R.drawable.user)
+                            .into(holder.sourceImage);
+                } else {
+                    Picasso.with(context)
+                            .load(imageURL)
+                            .into(holder.sourceImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         holder.postTime.setText(victimModel.getPostTime());
         holder.victimDescription.setText(victimModel.getDescription());
         holder.victimName.setText(victimModel.getName());
