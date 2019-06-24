@@ -144,7 +144,7 @@
                 android:id="@+id/arrow_down_imageView"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
-                android:src="@drawable/arrow_down" />
+                android:src="@drawable/arrow_right" />
 
 
         </LinearLayout>
