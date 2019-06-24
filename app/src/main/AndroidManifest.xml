@@ -21,7 +21,6 @@
         <activity android:name=".Activities.SettingActivity" />
         <activity android:name=".Activities.RegistrationActivity" />
         <activity android:name=".Activities.ProfileActivity">
-
         </activity>
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.HomeActivity" />

@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.findlostchildren.Activities.HomeActivity;
@@ -32,7 +33,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private RecyclerView victimRecyclerView;
-    private View loadingView;
+    ProgressBar progressBar;
     private VictimAdapter victimAdapter;
     private TextView noDataTV;
 
@@ -55,15 +56,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        noDataTV = view.findViewById(R.id.no_data_tv);
+        progressBar = view.findViewById(R.id.victims_progress_bar);
         context = getActivity().getApplicationContext();
         Context mContext = getActivity();
         fm = ((FragmentActivity) mContext).getSupportFragmentManager();
-
         victimRecyclerView = (RecyclerView) view.findViewById(R.id.victim_RecyclerView);
-        loadingView = view.findViewById(R.id.victim_loading_view);
-        loadingView.setVisibility(View.VISIBLE);
-        noDataTV = view.findViewById(R.id.no_data_tv);
-
         victimRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
         getVictimsData();
@@ -72,6 +70,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void getVictimsData() {
+        progressBar.setVisibility(View.VISIBLE);
         database = FirebaseDatabase.getInstance();
         victimReference = database.getReference();
 
@@ -81,7 +80,7 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 victimsArrayList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    for (DataSnapshot childSnapShot: snapshot.getChildren()){
+                    for (DataSnapshot childSnapShot : snapshot.getChildren()) {
                         VictimModel victimModel = childSnapShot.getValue(VictimModel.class);
                         victimsArrayList.add(victimModel);
                         victimAdapter.notifyDataSetChanged();
@@ -96,11 +95,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        if(victimsArrayList != null) {
+        if (victimsArrayList != null) {
             victimAdapter = new VictimAdapter(context, victimsArrayList);
             victimRecyclerView.setAdapter(victimAdapter);
-        }
-        loadingView.setVisibility(View.GONE);
+        } else
+            progressBar.setVisibility(View.GONE);
 
 
     }
