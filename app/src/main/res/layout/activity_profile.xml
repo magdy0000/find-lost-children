@@ -62,13 +62,15 @@
 
         <TextView
             android:id="@+id/city_textView"
-            android:layout_width="161dp"
+            android:layout_width="243dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:drawablePadding="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
             android:textColor="#CEFFFFFF"
-            android:textSize="30sp">
+            android:drawableLeft="@drawable/ic_home_white"
+            android:drawablePadding="10dp"
+            android:textSize="20sp">
 
         </TextView>
 
@@ -103,7 +105,7 @@
             android:layout_height="49dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:src="@drawable/more_img"
+            android:src="@drawable/add_profile"
 
             />
 
