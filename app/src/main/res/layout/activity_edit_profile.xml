@@ -72,15 +72,22 @@
             </LinearLayout>
         </LinearLayout>
 
-        <include
-            android:id="@+id/account_information_view"
-            layout="@layout/header_view"
+        <LinearLayout
+            android:id="@+id/layout1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@+id/add_image_btn_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/add_image_btn_layout">
+
+            <include
+                android:id="@+id/account_information_view"
+                layout="@layout/header_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <View
             android:id="@+id/view1"
@@ -92,19 +99,36 @@
             android:layout_marginLeft="@dimen/_8sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
-            app:layout_constraintTop_toBottomOf="@+id/account_information_view"
+            app:layout_constraintTop_toBottomOf="@+id/layout1"
             />
 
         <include
-            android:id="@+id/personal_information_view"
-            layout="@layout/header_personal_info"
+            android:id="@+id/header_view1"
+            layout="@layout/header_view2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/view1"  />
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
-            app:layout_constraintTop_toBottomOf="@+id/view1" />
+            app:layout_constraintTop_toBottomOf="@+id/header_view1">
 
+            <include
+                android:id="@+id/personal_information_view"
+                layout="@layout/header_personal_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <View
             android:id="@+id/view2"
@@ -116,12 +140,31 @@
             android:layout_marginLeft="@dimen/_8sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
-            app:layout_constraintTop_toBottomOf="@+id/personal_information_view"
+            app:layout_constraintTop_toBottomOf="@+id/layout2"
             />
 
+        <include
+            android:id="@+id/header_view2"
+            layout="@layout/content_personal_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/view2"  />
+
+        <Button
+            android:id="@+id/done_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_btn1"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="Done"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintTop_toBottomOf="@+id/header_view2"/>
+
     </android.support.constraint.ConstraintLayout>
-
-
-
-
 </ScrollView>
