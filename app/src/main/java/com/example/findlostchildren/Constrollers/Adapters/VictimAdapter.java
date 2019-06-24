@@ -59,6 +59,7 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), VictimActivity.class);
                 intent.putExtra("ID", victimModel.getVictimId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
             }
         });

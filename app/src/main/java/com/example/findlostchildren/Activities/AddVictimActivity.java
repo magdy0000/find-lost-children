@@ -111,7 +111,7 @@ public class AddVictimActivity extends AppCompatActivity {
     }
 
     private void saveVictim() {
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm aa");
         String postTime = df.format(Calendar.getInstance().getTime());
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -134,7 +134,7 @@ public class AddVictimActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     progressDialog.dismiss();
-                    startActivity(new Intent(AddVictimActivity.this, HomeActivity.class));
+                    startActivity(new Intent(AddVictimActivity.this, MainActivity.class));
                     finish();
                 } else {
                     Toast.makeText(AddVictimActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

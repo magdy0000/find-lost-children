@@ -57,6 +57,9 @@ dependencies {
     //dimns
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
+    //Bottom Navigation
+    implementation 'com.android.support:design:28.0.0'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

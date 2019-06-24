@@ -13,7 +13,7 @@
         android:layout_height="48dp"
         android:alpha="0.3"
         android:indeterminate="true"
-        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTint="@color/white"
         android:padding="8dp" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:alpha="0.3"
         android:gravity="center"
         android:text="@string/loading"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
 </LinearLayout>
