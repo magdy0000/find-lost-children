@@ -13,14 +13,15 @@ import android.widget.Toast;
 
 import com.example.findlostchildren.Fragments.HomeFragment;
 import com.example.findlostchildren.Fragments.NotificationFragment;
+import com.example.findlostchildren.Fragments.PersonalVictimFragment;
 import com.example.findlostchildren.Fragments.ProfileFragment;
 import com.example.findlostchildren.Fragments.SearchFragment;
 import com.example.findlostchildren.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-
     private FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(new HomeFragment());
                         break;
                     case R.id.action_myVictims:
-                        //load your fragment
+                        loadFragment(new PersonalVictimFragment());
+
                         break;
                     case R.id.action_search:
                         loadFragment(new SearchFragment());
@@ -71,4 +73,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().popBackStack();
         fragmentTransaction.commit();
     }
+
+
+
 }

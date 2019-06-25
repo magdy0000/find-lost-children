@@ -14,7 +14,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.EditProfileActivity" />
         <activity android:name=".Activities.GetStarted">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Activities.SearchActivity" />
         <activity android:name=".Activities.SettingActivity" />
@@ -28,11 +32,7 @@
         <activity android:name=".Activities.AddVictimActivity" />
         <activity android:name=".Activities.VictimActivity" />
         <activity android:name=".Activities.MainActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
     </application>
 
