@@ -29,8 +29,8 @@ import java.util.Scanner;
 
 public class VictimActivity extends AppCompatActivity {
     public static String userID;
-    Button known , unknown;
-    TextView victimIdTv , poster_name , vi_name , date , phone ,city , age , dis ;
+    Button known ;
+    TextView  poster_name , vi_name , date , phone ,city , age , dis ;
     ImageView vi_photo , poster_photo;
     String victimId , id ;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference() ;
@@ -44,7 +44,6 @@ public class VictimActivity extends AppCompatActivity {
         vi_name=findViewById(R.id.vi_name);
         date=findViewById(R.id.date);
         phone=findViewById(R.id.phone_num);
-        victimIdTv = findViewById(R.id.victim_id_tv);
         city=findViewById(R.id.vi_city);
         age=findViewById(R.id.vi_age);
         dis=findViewById(R.id.dis);
@@ -54,10 +53,8 @@ public class VictimActivity extends AppCompatActivity {
          victimId = getIntent().getExtras().getString("ID");
          id = getIntent().getExtras().getString("userId");
 
-        victimIdTv.setText(victimId);
 
         known=findViewById(R.id.known_victim);
-        unknown=findViewById(R.id.unknown_victim);
 
         known.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,10 +81,10 @@ public class VictimActivity extends AppCompatActivity {
                             //This is a Simple Logic to Send Notification different Device Programmatically....
                             if (login_user.equals(user.getUid())) {
 
-                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
+                                send_email = userID;
 
                             } else {
-                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
+                                send_email = userID;
                             }
 
                             try {
@@ -161,17 +158,16 @@ public class VictimActivity extends AppCompatActivity {
 
                 VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
 
-//                poster_name.setText(victimModel.getSourceName()+"");
-//                vi_name.setText(victimModel.getName());
-//                city.setText(victimModel.getCity());
-//                age.setText(victimModel.getAge());
-//                dis.setText(victimModel.getDescription());
-//                phone.setText(victimModel.getNumber());
-//                Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
-//
-//                Toast.makeText(VictimActivity.this, victimModel.getNumber(), Toast.LENGTH_SHORT).show();
-//
-//                Toast.makeText(VictimActivity.this, victimModel.getSourceName(), Toast.LENGTH_SHORT).show();
+                poster_name.setText(victimModel.getSourceName()+"");
+                vi_name.setText(victimModel.getName());
+                city.setText(victimModel.getCity());
+                age.setText(victimModel.getAge());
+                dis.setText(victimModel.getDescription());
+                phone.setText(victimModel.getNumber());
+                Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
+
+                userID=victimModel.getUserId();
+
             }
 
             @Override
