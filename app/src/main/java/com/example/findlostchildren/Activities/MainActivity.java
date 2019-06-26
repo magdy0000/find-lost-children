@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;import android.view.View;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
@@ -105,8 +106,10 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (!fragment.getTag().equals("home")) {
             fragment = new HomeFragment();
-
-            loadFragment(fragment,"home");
+            loadFragment(fragment, "home");
+            actionBarTV.setText("Home");
+            getSupportActionBar().setTitle("");
+            bottomNavigationView.setSelectedItemId(R.id.action_home);
 
 
         }else {

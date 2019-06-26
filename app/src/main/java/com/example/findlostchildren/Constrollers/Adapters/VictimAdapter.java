@@ -62,7 +62,7 @@ public class VictimAdapter extends RecyclerView.Adapter<VictimHolder> {
                 String name = dataSnapshot.child("userName").getValue(String.class);
                 String imageURL = dataSnapshot.child("imageURL").getValue(String.class);
 
-                if (name == null)
+                if (name == null || name.isEmpty())
                     holder.sourceName.setText("User");
                 else
                     holder.sourceName.setText(name);
