@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;import android.view.View;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.findlostchildren.Fragments.HomeFragment;
@@ -25,20 +26,20 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Fragment fragment  ;
     private long backPressedTime ;
+    private TextView actionBarTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        actionBarTV = findViewById(R.id.action_bar_TV);
         fragmentManager = getSupportFragmentManager();
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
-        getSupportActionBar().setTitle("Home");
+        getSupportActionBar().setTitle("");
+        actionBarTV.setText("Home");
         loadStartFragment();
-
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setItemIconTintList(null);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,30 +49,36 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_home:
                         fragment = new HomeFragment();
                         loadFragment(fragment ,"home" );
-
-                        getSupportActionBar().setTitle("Home");
+                        actionBarTV.setText("Home");
+                        getSupportActionBar().setTitle("");
                         break;
+
                     case R.id.action_myVictims:
                         fragment = new PersonalVictimFragment();
                         loadFragment(fragment ,"My Victims" );
-
-                        getSupportActionBar().setTitle("My Victims");
+                        actionBarTV.setText("My Victims");
+                        getSupportActionBar().setTitle("");
                         break;
+
                     case R.id.action_search:
                         fragment = new SearchFragment();
                         loadFragment(fragment , "search");
-                        getSupportActionBar().setTitle("Search");
+                        actionBarTV.setText("Search");
+                        getSupportActionBar().setTitle("");
                         break;
+
                     case R.id.action_profile:
                         fragment = new ProfileFragment();
                         loadFragment(fragment,"profile");
-                        getSupportActionBar().setTitle("Profile");
+                        actionBarTV.setText("Profile");
+                        getSupportActionBar().setTitle("");
                         break;
+
                     case R.id.action_notification:
                         fragment = new NotificationFragment();
-
                         loadFragment(fragment,"notification");
-                        getSupportActionBar().setTitle("Notification");
+                        actionBarTV.setText("Notification");
+                        getSupportActionBar().setTitle("");
                         break;
                 }
                 return true;
