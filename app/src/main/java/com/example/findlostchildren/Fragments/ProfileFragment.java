@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
 
@@ -83,7 +84,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         //get Current User ID
-        String userID = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";//firebaseUser.getUid();
+        String userID = "gzfUbSh1hBUJlNkFj5bM46SwRiG3"; //firebaseUser.getUid();
 
 
         //addListenerForSingleValueEvent to get data to Current User only
@@ -95,9 +96,22 @@ public class ProfileFragment extends Fragment {
 
                 userName = dataSnapshot.child("userName").getValue(String.class);
                 phone = dataSnapshot.child("phone").getValue(String.class);
+                String city = dataSnapshot.child("city").getValue(String.class);
+                String imageURL = dataSnapshot.child("imageURL").getValue(String.class);
 
                 name_textView.setText(userName);
                 phone_textView.setText(phone);
+
+
+                if (imageURL != null) {
+                    Picasso.with(context)
+                            .load(imageURL)
+                            .into(profile_imageView);
+                }
+
+                if (city != null) {
+                    city_textView.setText(city);
+                }
 
             }
 

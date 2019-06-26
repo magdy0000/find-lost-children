@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.findlostchildren.Fragments.ProfileFragment;
 import com.example.findlostchildren.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -92,8 +93,8 @@ public class EditProfileActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         user = mAuth.getCurrentUser();
-        userId = user.getUid();
-        userEmail = user.getEmail();
+        userId = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";//user.getUid();
+        userEmail = "a@hmail.com";//user.getEmail();
 
     }
 
@@ -114,6 +115,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 break;
             case R.id.done_imaageView:
                 saveChange();
+
                 break;
         }
     }
@@ -167,9 +169,6 @@ public class EditProfileActivity extends AppCompatActivity {
         facebookLink = editFacebookLink.getText().toString();
         about = editAbout.getText().toString();
 
-        final ProgressDialog progressDialog = new ProgressDialog(EditProfileActivity.this);
-        progressDialog.setMessage("Please Wait...");
-        progressDialog.show();
 
         if (imageUri != null) {
             final String imageName = UUID.randomUUID().toString() + ".jpg";
@@ -180,7 +179,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     storageReference.child("Images").child("Users").child(imageName).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            progressDialog.dismiss();
                             String imageURL = uri.toString();
                             databaseReference.child("Users").child(userId).child("imageURL").setValue(imageURL);
                         }
@@ -189,7 +187,6 @@ public class EditProfileActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
                     Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
@@ -219,7 +216,9 @@ public class EditProfileActivity extends AppCompatActivity {
             databaseReference.child("Users").child(userId).child("about").setValue(about);
         }
 
-        progressDialog.dismiss();
+        Toast.makeText(this, "Data Changed", Toast.LENGTH_SHORT).show();
 
+        Intent intent = new Intent(this, ProfileFragment.class);
+        startActivity(intent);
     }
 }
