@@ -2,11 +2,15 @@ package com.example.findlostchildren.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.findlostchildren.Helpers.InputValidator;
+import com.example.findlostchildren.Models.Base64Image;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +36,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -79,6 +89,7 @@ public class AddVictimActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
+    private String base64Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +153,17 @@ public class AddVictimActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK && data != null && data.getData() != null) {
                 imageUri = data.getData();
 
+                final Uri imageUri = data.getData();
+                InputStream imageStream = null;
+                try {
+                    imageStream = getContentResolver().openInputStream(imageUri);
+                    Log.d("BitmapImage", "onActivityResult: " + "Done");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                base64Image = encodeToBase64(selectedImage);
+
                 Picasso.with(getApplicationContext())
                         .load(imageUri)
                         .into(victimImage);
@@ -200,7 +222,7 @@ public class AddVictimActivity extends AppCompatActivity {
 
         String deviceToken = FirebaseInstanceId.getInstance().getToken();
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference().child("Victims");
+        databaseReference = database.getReference();
 
         String victimId = databaseReference.push().getKey();
 
@@ -209,8 +231,19 @@ public class AddVictimActivity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait.....");
         progressDialog.show();
 
+
+        if (base64Image != null) {
+            Base64Image newBase64Image = new Base64Image(victimId, base64Image);
+            databaseReference.child("Base64Images").push().setValue(newBase64Image).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful())
+                        Log.d("BASE64", "onComplete: Image Saved Successfully " + base64Image);
+                }
+            });
+        }
         VictimModel newVictim = new VictimModel(userId, victimId, postTime, imageUrl, name, city, age, number, description, deviceToken);
-        databaseReference.child(userId).child(victimId).setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child("Victims").child(userId).child(victimId).setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -225,5 +258,12 @@ public class AddVictimActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static String encodeToBase64(Bitmap image) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        return Base64.encodeToString(b, Base64.DEFAULT);
     }
 }
