@@ -170,15 +170,15 @@ public class VictimActivity extends AppCompatActivity {
 
 
                 poster_name.setText(victimModel.getSourceName()+"");
-                vi_name.setText(victimModel.getName());
-                city.setText("City"+victimModel.getCity());
-                age.setText("Age"+victimModel.getAge());
+                vi_name.setText("Name : "+victimModel.getName());
+                city.setText("City : "+victimModel.getCity());
+                age.setText("Age : "+victimModel.getAge());
                 dis.setText(victimModel.getDescription());
-                phone.setText("Number"+victimModel.getNumber());
+                phone.setText("Number : "+victimModel.getNumber());
                 Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
 
                 userID=victimModel.getUserId();
-                Toast.makeText(VictimActivity.this, userID, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
