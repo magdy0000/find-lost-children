@@ -5,14 +5,9 @@
 
         />
 
-
     <gradient
-
         android:angle="45"
         android:endColor="#FF5722"
         android:startColor="#FF5722"
         android:type="linear" />
-    <size
-        android:width="270dp"
-        android:height="45dp" />
 </shape>
