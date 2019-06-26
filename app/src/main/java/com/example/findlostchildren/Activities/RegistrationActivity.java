@@ -142,7 +142,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             uploadDataTofireBase();
 
-                            startActivity(new Intent( RegistrationActivity.this , LoginActivity.class));
+                            startActivity(new Intent( RegistrationActivity.this , CompleteInformationActivity.class));
                             finish();
 
                             MyUtils.mailforLogin= email ;

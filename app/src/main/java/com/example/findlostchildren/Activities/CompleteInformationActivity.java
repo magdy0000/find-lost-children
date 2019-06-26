@@ -1,6 +1,5 @@
 package com.example.findlostchildren.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,17 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.findlostchildren.Fragments.ProfileFragment;
 import com.example.findlostchildren.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -35,22 +31,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class CompleteInformationActivity extends AppCompatActivity {
 
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
     @BindView(R.id.add_image_btn)
     ImageView addImageBtn;
-    @BindView(R.id.arrow_right_imageView)
-    ImageView arrowRightImageView;
-    @BindView(R.id.edit_userName)
-    EditText editUserName;
-    @BindView(R.id.edit_phone_number)
-    EditText editPhoneNumber;
-    @BindView(R.id.button_reset_password)
-    Button buttonResetPassword;
-    @BindView(R.id.arrow_right_imageView2)
-    ImageView arrowRightImageView2;
     @BindView(R.id.edit_city)
     EditText editCity;
     @BindView(R.id.edit_age)
@@ -59,15 +45,10 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText editFacebookLink;
     @BindView(R.id.edit_about)
     EditText editAbout;
+    @BindView(R.id.skip_imageView)
+    ImageView skipImageView;
     @BindView(R.id.done_imageView)
-    ImageView doneImageView;
-
-    @BindView(R.id.header_view1)
-    View accountInformationView;
-    @BindView(R.id.header_view2)
-    View personalInformationView;
-
-
+    ImageView done_imageView;
 
 
     Uri imageUri;
@@ -82,11 +63,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private String userId, userEmail;
     String userName, phone, city, age, facebookLink, about;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_complete_information);
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -101,27 +81,20 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.add_image_btn, R.id.arrow_right_imageView, R.id.button_reset_password, R.id.arrow_right_imageView2, R.id.done_imageView})
-    public void onViewClicked(final View view) {
+    @OnClick({R.id.profile_image, R.id.add_image_btn, R.id.skip_imageView,R.id.done_imageView})
+    public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.profile_image:
+                break;
             case R.id.add_image_btn:
                 selectImage();
                 break;
-            case R.id.arrow_right_imageView:
-                accountInformationView.setVisibility(View.VISIBLE);
-                arrowRightImageView.setRotation(90);
-                break;
-            case R.id.button_reset_password:
-                resetPassowrd();
-                break;
-            case R.id.arrow_right_imageView2:
-                personalInformationView.setVisibility(View.VISIBLE);
-                arrowRightImageView2.setRotation(90);
-
+            case R.id.skip_imageView:
+                Intent intent = new Intent(CompleteInformationActivity.this , LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.done_imageView:
                 saveChange();
-
                 break;
         }
     }
@@ -147,29 +120,8 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void resetPassowrd() {
-        final ProgressDialog progressDialog = new ProgressDialog(EditProfileActivity.this);
-        progressDialog.setMessage("Please Wait...");
-        progressDialog.show();
-
-        mAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    progressDialog.dismiss();
-                    Toast.makeText(EditProfileActivity.this, "Check Your Email", Toast.LENGTH_SHORT).show();
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(EditProfileActivity.this, "Failed Sending Email" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
     private void saveChange() {
 
-        userName = editUserName.getText().toString();
-        phone = editPhoneNumber.getText().toString().trim();
         city = editCity.getText().toString();
         age = editAge.getText().toString().trim();
         facebookLink = editFacebookLink.getText().toString();
@@ -193,17 +145,10 @@ public class EditProfileActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CompleteInformationActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
-        }
-        if (userName != null) {
-            databaseReference.child("Users").child(userId).child("userName").setValue(userName);
-        }
-
-        if (phone != null) {
-            databaseReference.child("Users").child(userId).child("phone").setValue(phone);
         }
 
         if (city != null) {
@@ -224,7 +169,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Data Changed", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, ProfileFragment.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
 }
