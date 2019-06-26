@@ -33,7 +33,7 @@
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
+           />
 
         <TextView
           android:id="@+id/poster_name"
@@ -42,7 +42,6 @@
             android:layout_gravity="top|center|left"
             android:layout_marginTop="8dp"
             android:layout_margin="@dimen/_10sdp"
-            android:text="Mohamed ELHDAD"
             android:textColor="#fff"
             android:layout_toRightOf="@id/poster_photo"
             android:textSize="@dimen/_13sdp"
@@ -58,7 +57,6 @@
             android:layout_margin="10dp"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@id/poster_photo"
-            android:text="2 May , 5:30Am"
             android:textColor="#CDFFFFFF"
             android:textSize="@dimen/_11sdp"
 
@@ -70,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_160sdp"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_launcher" />
+       />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,9 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
-            android:drawableRight="@drawable/ic_brightness_1_black_24dp"
             android:drawablePadding="10dp"
-            android:text="hesham mohamed"
             android:textColor="#CBFFFFFF"
             android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
@@ -97,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
             android:drawablePadding="10dp"
-            android:text="City : Mansoura"
+            android:text="City : "
             android:textColor="#CBFFFFFF"
             android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
@@ -108,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
             android:drawablePadding="10dp"
-            android:text="Age : 11"
+            android:text="Age : "
             android:textColor="#CBFFFFFF"
             android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
@@ -119,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
             android:drawablePadding="10dp"
-            android:text="Number : 010100000002"
+            android:text="Number : "
             android:textColor="#CBFFFFFF"
             android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
@@ -133,7 +129,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="40dp"
             android:drawablePadding="10dp"
-            android:text="this chaild has been missing for two weeks and we ask anyone how know or found him to inform me"
             android:textColor="#BCFFFFFF"
             android:textSize="@dimen/_11sdp" />
 
