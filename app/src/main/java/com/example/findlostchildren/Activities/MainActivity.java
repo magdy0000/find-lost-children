@@ -107,14 +107,18 @@ public class MainActivity extends AppCompatActivity {
             fragment = new HomeFragment();
 
             loadFragment(fragment,"home");
-        }else {
 
+
+        }else {
 
             if (backPressedTime + 2000 > System.currentTimeMillis()) {
                 finishAffinity();
+
             } else {
                 Toast.makeText(this, "press again to exit ", Toast.LENGTH_SHORT).show();
             }
+            backPressedTime = System.currentTimeMillis();
         }
+
     }
 }

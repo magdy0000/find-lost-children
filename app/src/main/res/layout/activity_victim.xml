@@ -51,6 +51,7 @@
             />
 
         <TextView
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center|left"
@@ -65,6 +66,7 @@
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/vi_photo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_160sdp"
         android:layout_marginTop="20dp"
@@ -78,6 +80,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/vi_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
@@ -89,6 +92,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/vi_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
@@ -99,6 +103,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/vi_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
@@ -109,6 +114,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/phone_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
@@ -119,6 +125,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/dis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
@@ -133,32 +140,16 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="10dp">
 
         <Button
             android:id="@+id/known_victim"
             android:layout_width="147dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
+            android:layout_gravity="center"
             android:text="known"
             android:textAllCaps="true"
-            android:layout_marginLeft="50dp"
             android:background="@drawable/background_btn1" />
 
-        <Button
-            android:id="@+id/unknown_victim"
-            android:layout_width="147dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:text="unknown"
-            android:textAllCaps="true"
-            android:layout_marginRight="50dp"
-            android:background="@drawable/background_btn1" />
-    </FrameLayout>
     </LinearLayout>
 
 </ScrollView>
