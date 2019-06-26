@@ -3,7 +3,10 @@
     package="com.example.findlostchildren">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +17,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.CompleteInformationActivity"></activity>
         <activity android:name=".Activities.EditProfileActivity" />
-        <activity android:name=".Activities.GetStarted"></activity>
+        <activity android:name=".Activities.GetStarted">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activities.SearchActivity" />
         <activity android:name=".Activities.SettingActivity" />
         <activity android:name=".Activities.RegistrationActivity" />
@@ -25,11 +34,7 @@
         <activity android:name=".Activities.AddVictimActivity" />
         <activity android:name=".Activities.VictimActivity" />
         <activity android:name=".Activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
