@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.bumptech.glide.Glide;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
@@ -28,9 +29,10 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class VictimActivity extends AppCompatActivity {
+
     public static String userID;
-    Button known ;
-    TextView  poster_name , vi_name , date , phone ,city , age , dis ;
+    Button known , unknown;
+    TextView victimIdTv , poster_name , vi_name , date , phone ,city , age , dis ;
     ImageView vi_photo , poster_photo;
     String victimId , id ;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference() ;
@@ -40,7 +42,8 @@ public class VictimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_victim);
-        poster_name=findViewById(R.id.poster_name);
+
+        poster_name=findViewById(R.id.victim_id_tv);
         vi_name=findViewById(R.id.vi_name);
         date=findViewById(R.id.date);
         phone=findViewById(R.id.phone_num);
@@ -54,7 +57,9 @@ public class VictimActivity extends AppCompatActivity {
          id = getIntent().getExtras().getString("userId");
 
 
+
         known=findViewById(R.id.known_victim);
+
 
         known.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,10 +86,10 @@ public class VictimActivity extends AppCompatActivity {
                             //This is a Simple Logic to Send Notification different Device Programmatically....
                             if (login_user.equals(user.getUid())) {
 
-                                send_email = userID;
+                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
 
                             } else {
-                                send_email = userID;
+                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
                             }
 
                             try {
@@ -158,6 +163,7 @@ public class VictimActivity extends AppCompatActivity {
 
                 VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
 
+
                 poster_name.setText(victimModel.getSourceName()+"");
                 vi_name.setText(victimModel.getName());
                 city.setText(victimModel.getCity());
@@ -165,8 +171,6 @@ public class VictimActivity extends AppCompatActivity {
                 dis.setText(victimModel.getDescription());
                 phone.setText(victimModel.getNumber());
                 Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
-
-                userID=victimModel.getUserId();
 
             }
 
