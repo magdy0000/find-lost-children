@@ -97,7 +97,7 @@ public class EditProfileActivity extends AppCompatActivity {
         storageReference = storage.getReference();
         user = mAuth.getCurrentUser();
         userId = user.getUid(); //"zTK1GFINblNcrGdhF5EUB9XlE5M2";
-        userEmail = user.getEmail(); //"m@m.com";
+        userEmail = user.getEmail();//"m@m.com";
 
     }
 
@@ -108,15 +108,28 @@ public class EditProfileActivity extends AppCompatActivity {
                 selectImage();
                 break;
             case R.id.arrow_right_imageView:
-                accountInformationView.setVisibility(View.VISIBLE);
-                arrowRightImageView.setRotation(90);
+                if(accountInformationView.getVisibility()== View.GONE){
+                    accountInformationView.setVisibility(View.VISIBLE);
+                    arrowRightImageView.setRotation(90);
+                }
+                else{
+                    accountInformationView.setVisibility(View.GONE);
+                    arrowRightImageView.setRotation(360);
+                }
+
                 break;
             case R.id.button_reset_password:
                 resetPassowrd();
                 break;
             case R.id.arrow_right_imageView2:
-                personalInformationView.setVisibility(View.VISIBLE);
-                arrowRightImageView2.setRotation(90);
+                if (personalInformationView.getVisibility()== View.GONE){
+                    personalInformationView.setVisibility(View.VISIBLE);
+                    arrowRightImageView2.setRotation(90);
+                }
+                else {
+                    personalInformationView.setVisibility(View.GONE);
+                    arrowRightImageView2.setRotation(360);
+                }
 
                 break;
             case R.id.done_imageView:

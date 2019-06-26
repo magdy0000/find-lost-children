@@ -82,7 +82,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         //get Current User ID
-        String userID = firebaseUser.getUid();
+        String userID = firebaseUser.getUid(); //"zTK1GFINblNcrGdhF5EUB9XlE5M2";
 
 
         //addListenerForSingleValueEvent to get data to Current User only
