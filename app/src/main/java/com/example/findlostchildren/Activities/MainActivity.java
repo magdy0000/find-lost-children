@@ -7,9 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.MenuItem;import android.view.View;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
-    private Fragment fragment;
-    private long backPressedTime;
+    private Fragment fragment  ;
+    private long backPressedTime ;
     private TextView actionBarTV;
 
     @Override
@@ -50,35 +48,35 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         fragment = new HomeFragment();
-                        loadFragment(fragment, "home");
+                        loadFragment(fragment ,"home" );
                         actionBarTV.setText("Home");
                         getSupportActionBar().setTitle("");
                         break;
 
                     case R.id.action_myVictims:
                         fragment = new PersonalVictimFragment();
-                        loadFragment(fragment, "My Victims");
+                        loadFragment(fragment ,"My Victims" );
                         actionBarTV.setText("My Victims");
                         getSupportActionBar().setTitle("");
                         break;
 
                     case R.id.action_search:
                         fragment = new SearchFragment();
-                        loadFragment(fragment, "search");
+                        loadFragment(fragment , "search");
                         actionBarTV.setText("Search");
                         getSupportActionBar().setTitle("");
                         break;
 
                     case R.id.action_profile:
                         fragment = new ProfileFragment();
-                        loadFragment(fragment, "profile");
+                        loadFragment(fragment,"profile");
                         actionBarTV.setText("Profile");
                         getSupportActionBar().setTitle("");
                         break;
 
                     case R.id.action_notification:
                         fragment = new NotificationFragment();
-                        loadFragment(fragment, "notification");
+                        loadFragment(fragment,"notification");
                         actionBarTV.setText("Notification");
                         getSupportActionBar().setTitle("");
                         break;
@@ -89,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadStartFragment() {
-        fragment = new HomeFragment();
-        loadFragment(fragment, "home");
+        fragment = new HomeFragment() ;
+        loadFragment(fragment,"home");
     }
 
-    private void loadFragment(Fragment fragment, String tag) {
+    private void loadFragment(Fragment fragment , String tag) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.fragment_container, fragment, tag);
+        fragmentTransaction.replace(R.id.fragment_container, fragment ,tag );
         fragmentTransaction.addToBackStack(null);
 
         getSupportFragmentManager().popBackStack();
@@ -107,19 +105,11 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (!fragment.getTag().equals("home")) {
             fragment = new HomeFragment();
-            loadFragment(fragment, "home");
-            Menu menu = bottomNavigationView.getMenu();
-            bottomNavigationView.setItemIconTintList(null);
-            actionBarTV.setText("Home");
-            getSupportActionBar().setTitle("");
-            menu.getItem(0).setIcon(R.drawable.home_colored);
-            menu.getItem(1).setIcon(R.drawable.profile);
-            menu.getItem(2).setIcon(R.drawable.search);
-            menu.getItem(3).setIcon(R.drawable.profile1);
-            menu.getItem(4).setIcon(R.drawable.notification);
+
+            loadFragment(fragment,"home");
 
 
-        } else {
+        }else {
 
             if (backPressedTime + 2000 > System.currentTimeMillis()) {
                 finishAffinity();
