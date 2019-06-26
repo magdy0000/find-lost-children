@@ -93,8 +93,8 @@ public class EditProfileActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         user = mAuth.getCurrentUser();
-        userId = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";//user.getUid();
-        userEmail = "a@hmail.com";//user.getEmail();
+        userId = "zTK1GFINblNcrGdhF5EUB9XlE5M2";//user.getUid();
+        userEmail = "m@m.com";//user.getEmail();
 
     }
 

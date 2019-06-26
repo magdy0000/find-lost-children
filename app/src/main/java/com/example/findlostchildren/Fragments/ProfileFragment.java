@@ -84,7 +84,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         //get Current User ID
-        String userID = "gzfUbSh1hBUJlNkFj5bM46SwRiG3"; //firebaseUser.getUid();
+        String userID = "zTK1GFINblNcrGdhF5EUB9XlE5M2"; //firebaseUser.getUid();
 
 
         //addListenerForSingleValueEvent to get data to Current User only
@@ -97,6 +97,7 @@ public class ProfileFragment extends Fragment {
                 userName = dataSnapshot.child("userName").getValue(String.class);
                 phone = dataSnapshot.child("phone").getValue(String.class);
                 String city = dataSnapshot.child("city").getValue(String.class);
+                String about = dataSnapshot.child("about").getValue(String.class);
                 String imageURL = dataSnapshot.child("imageURL").getValue(String.class);
 
                 name_textView.setText(userName);
@@ -111,6 +112,10 @@ public class ProfileFragment extends Fragment {
 
                 if (city != null) {
                     city_textView.setText(city);
+                }
+
+                if (about != null) {
+                    about_textView.setText(about);
                 }
 
             }
