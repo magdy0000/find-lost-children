@@ -2,9 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/profile_colored" android:state_checked="true"/>
     <item android:drawable="@drawable/profile1" android:state_checked="false"/>
-    <gradient
-        android:angle="45"
-        android:endColor="#927618"
-        android:startColor="#FF5722"
-        android:type="linear" />
 </selector>
