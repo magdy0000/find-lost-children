@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.bumptech.glide.Glide;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
@@ -28,6 +29,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class VictimActivity extends AppCompatActivity {
+
     public static String userID;
     Button known , unknown;
     TextView victimIdTv , poster_name , vi_name , date , phone ,city , age , dis ;
@@ -40,11 +42,11 @@ public class VictimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_victim);
-        poster_name=findViewById(R.id.poster_name);
+
+        poster_name=findViewById(R.id.victim_id_tv);
         vi_name=findViewById(R.id.vi_name);
         date=findViewById(R.id.date);
         phone=findViewById(R.id.phone_num);
-        victimIdTv = findViewById(R.id.victim_id_tv);
         city=findViewById(R.id.vi_city);
         age=findViewById(R.id.vi_age);
         dis=findViewById(R.id.dis);
@@ -54,10 +56,10 @@ public class VictimActivity extends AppCompatActivity {
          victimId = getIntent().getExtras().getString("ID");
          id = getIntent().getExtras().getString("userId");
 
-        victimIdTv.setText(victimId);
+
 
         known=findViewById(R.id.known_victim);
-        unknown=findViewById(R.id.unknown_victim);
+
 
         known.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,17 +163,15 @@ public class VictimActivity extends AppCompatActivity {
 
                 VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
 
-//                poster_name.setText(victimModel.getSourceName()+"");
-//                vi_name.setText(victimModel.getName());
-//                city.setText(victimModel.getCity());
-//                age.setText(victimModel.getAge());
-//                dis.setText(victimModel.getDescription());
-//                phone.setText(victimModel.getNumber());
-//                Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
-//
-//                Toast.makeText(VictimActivity.this, victimModel.getNumber(), Toast.LENGTH_SHORT).show();
-//
-//                Toast.makeText(VictimActivity.this, victimModel.getSourceName(), Toast.LENGTH_SHORT).show();
+
+                poster_name.setText(victimModel.getSourceName()+"");
+                vi_name.setText(victimModel.getName());
+                city.setText(victimModel.getCity());
+                age.setText(victimModel.getAge());
+                dis.setText(victimModel.getDescription());
+                phone.setText(victimModel.getNumber());
+                Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
+
             }
 
             @Override
