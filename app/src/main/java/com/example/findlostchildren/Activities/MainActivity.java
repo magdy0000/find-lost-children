@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadStartFragment() {
-        loadFragment(new HomeFragment(),"home");
+        fragment = new HomeFragment() ;
+        loadFragment(fragment,"home");
     }
 
     private void loadFragment(Fragment fragment , String tag) {
