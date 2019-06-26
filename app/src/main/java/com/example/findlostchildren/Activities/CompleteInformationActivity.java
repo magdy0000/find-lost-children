@@ -51,6 +51,7 @@ public class CompleteInformationActivity extends AppCompatActivity {
     ImageView done_imageView;
 
 
+    boolean check = false  ;
     Uri imageUri;
 
     FirebaseStorage storage;
@@ -151,26 +152,38 @@ public class CompleteInformationActivity extends AppCompatActivity {
 
         }
 
-        if (city != null) {
+        if (!city.equals("")) {
             databaseReference.child("Users").child(userId).child("city").setValue(city);
+            check = true ;
         }
 
-        if (age != null) {
+        if (!age.equals("")) {
             databaseReference.child("Users").child(userId).child("age").setValue(age);
+            check = true ;
         }
 
-        if (facebookLink != null) {
+        if (!facebookLink.equals("")) {
             databaseReference.child("Users").child(userId).child("facebookLink").setValue(facebookLink);
+            check = true ;
         }
 
-        if (about != null) {
+        if (!about.equals("")) {
             databaseReference.child("Users").child(userId).child("about").setValue(about);
+            check = true ;
         }
 
-        Toast.makeText(this, "Data Changed", Toast.LENGTH_SHORT).show();
+        if(check) {
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+
+            Toast.makeText(this, "Data Changed", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+        }else {
+
+            Toast.makeText(this, "No thing changed", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
