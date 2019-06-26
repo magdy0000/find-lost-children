@@ -17,7 +17,7 @@ public class VictimHolder extends RecyclerView.ViewHolder {
     public CircleImageView sourceImage;
     public TextView sourceName, postTime, victimDescription, victimName;
     public ImageView victimImage;
-    public Button detalisBtn;
+    public TextView detalisBtn;
 
     public VictimHolder(@NonNull View view) {
         super(view);
