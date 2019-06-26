@@ -14,8 +14,8 @@ public class CardInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_info);
 
-        known=findViewById(R.id.known_victim);
-        unknown=findViewById(R.id.unknown_victim);
+
+
 
     }
 }
