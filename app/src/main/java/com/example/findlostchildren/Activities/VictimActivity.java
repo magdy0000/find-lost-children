@@ -1,5 +1,6 @@
 package com.example.findlostchildren.Activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -31,7 +32,7 @@ import java.util.Scanner;
 public class VictimActivity extends AppCompatActivity {
 
     public static String userID;
-    Button known , unknown;
+    Button known ;
     TextView victimIdTv , poster_name , vi_name , date , phone ,city , age , dis ;
     ImageView vi_photo , poster_photo;
     String victimId , id ;
@@ -43,7 +44,7 @@ public class VictimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_victim);
 
-        poster_name=findViewById(R.id.victim_id_tv);
+        poster_name=findViewById(R.id.poster_name);
         vi_name=findViewById(R.id.vi_name);
         date=findViewById(R.id.date);
         phone=findViewById(R.id.phone_num);
@@ -86,10 +87,10 @@ public class VictimActivity extends AppCompatActivity {
                             //This is a Simple Logic to Send Notification different Device Programmatically....
                             if (login_user.equals(user.getUid())) {
 
-                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
+                                send_email = userID;
 
                             } else {
-                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
+                                send_email = userID;
                             }
 
                             try {
@@ -144,6 +145,10 @@ public class VictimActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                Intent i = new Intent(VictimActivity.this,MainActivity.class);
+                startActivity(i);
+                finish();
             }
 
 
@@ -166,12 +171,14 @@ public class VictimActivity extends AppCompatActivity {
 
                 poster_name.setText(victimModel.getSourceName()+"");
                 vi_name.setText(victimModel.getName());
-                city.setText(victimModel.getCity());
-                age.setText(victimModel.getAge());
+                city.setText("City"+victimModel.getCity());
+                age.setText("Age"+victimModel.getAge());
                 dis.setText(victimModel.getDescription());
-                phone.setText(victimModel.getNumber());
+                phone.setText("Number"+victimModel.getNumber());
                 Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
 
+                userID=victimModel.getUserId();
+                Toast.makeText(VictimActivity.this, userID, Toast.LENGTH_SHORT).show();
             }
 
             @Override
