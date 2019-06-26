@@ -30,6 +30,7 @@ public class VictimActivity extends AppCompatActivity {
     TextView victimIdTv;
     String victimId ;
     public static String userID;
+    String id ;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference() ;
     FirebaseAuth auth = FirebaseAuth.getInstance() ;
 
@@ -39,7 +40,10 @@ public class VictimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_victim);
 
         victimIdTv = findViewById(R.id.victim_id_tv);
+
          victimId = getIntent().getExtras().getString("ID");
+         id = getIntent().getExtras().getString("userId");
+
         victimIdTv.setText(victimId);
 
         known=findViewById(R.id.known_victim);
@@ -136,7 +140,7 @@ public class VictimActivity extends AppCompatActivity {
     private void getData() {
 
 
-        ref.child("Victims").child(auth.getCurrentUser().getUid()).child(victimId).addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child("Victims").child(id).child(victimId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
