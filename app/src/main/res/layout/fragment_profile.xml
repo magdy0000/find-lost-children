@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#161734"
-    tools:context=".Activities.ProfileActivity">
+    tools:context=".Fragments.ProfileFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,6 +26,16 @@
             app:layout_constraintGuide_end="@dimen/_80sdp" />
 
 
+        <Button
+            android:id="@+id/sign_out_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorHide"
+            android:text="Sign Out"
+            android:textColor="@color/white"
+            android:padding="7dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_imageView"
