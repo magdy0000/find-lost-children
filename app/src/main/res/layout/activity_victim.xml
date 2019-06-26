@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,12 @@
     android:paddingTop="20dp"
     tools:context=".Activities.CardInfoActivity">
 
-    <FrameLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp">
@@ -20,9 +25,12 @@
             android:layout_gravity="right|top"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
             android:src="@drawable/ic_more_horiz_black_24dp" />
 
         <ImageView
+            android:id="@+id/poster_photo"
+            android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher_round" />
@@ -32,11 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_gravity="top|center|left"
-            android:layout_marginLeft="90dp"
             android:layout_marginTop="8dp"
+            android:layout_margin="@dimen/_10sdp"
             android:text="Mohamed ELHDAD"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:layout_toRightOf="@id/poster_photo"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold"
 
             />
@@ -45,19 +54,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center|left"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/poster_photo"
             android:text="2 May , 5:30Am"
             android:textColor="#CDFFFFFF"
-            android:textSize="10sp"
+            android:textSize="@dimen/_11sdp"
 
             />
-    </FrameLayout>
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="@dimen/_160sdp"
         android:layout_marginTop="20dp"
         android:src="@mipmap/ic_launcher" />
 
@@ -76,7 +85,7 @@
             android:drawablePadding="10dp"
             android:text="hesham mohamed"
             android:textColor="#CBFFFFFF"
-            android:textSize="25sp"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -86,7 +95,7 @@
             android:drawablePadding="10dp"
             android:text="City : Mansoura"
             android:textColor="#CBFFFFFF"
-            android:textSize="25sp"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -96,7 +105,7 @@
             android:drawablePadding="10dp"
             android:text="Age : 11"
             android:textColor="#CBFFFFFF"
-            android:textSize="25sp"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -106,7 +115,7 @@
             android:drawablePadding="10dp"
             android:text="Number : 010100000002"
             android:textColor="#CBFFFFFF"
-            android:textSize="25sp"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -119,7 +128,7 @@
             android:drawablePadding="10dp"
             android:text="this chaild has been missing for two weeks and we ask anyone how know or found him to inform me"
             android:textColor="#BCFFFFFF"
-            android:textSize="22sp" />
+            android:textSize="@dimen/_11sdp" />
 
 
     </LinearLayout>
@@ -150,5 +159,6 @@
             android:layout_marginRight="50dp"
             android:background="@drawable/background_btn1" />
     </FrameLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

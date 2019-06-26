@@ -41,11 +41,6 @@ public class VictimActivity extends AppCompatActivity {
 
         victimIdTv = findViewById(R.id.victim_id_tv);
 
-         victimId = getIntent().getExtras().getString("ID");
-         id = getIntent().getExtras().getString("userId");
-
-        victimIdTv.setText(victimId);
-
         known=findViewById(R.id.known_victim);
         unknown=findViewById(R.id.unknown_victim);
 
@@ -53,6 +48,7 @@ public class VictimActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                known.setEnabled(false);
                 OneSignal.startInit(VictimActivity.this).init();
 
                 final FirebaseUser user=auth.getCurrentUser();
@@ -72,7 +68,9 @@ public class VictimActivity extends AppCompatActivity {
 
                             //This is a Simple Logic to Send Notification different Device Programmatically....
                             if (login_user.equals(user.getUid())) {
-                                send_email = userID;
+
+                                send_email = "gzfUbSh1hBUJlNkFj5bM46SwRiG3";
+
                             } else {
                                 send_email = user.getUid();
                             }
@@ -131,7 +129,9 @@ public class VictimActivity extends AppCompatActivity {
                 });
             }
 
+
         });
+
 
         getData();
     }
