@@ -9,7 +9,7 @@
         android:textStyle="bold"
         android:background="#161734"
         android:textAllCaps="true"
-        android:textSize="20sp"
+        android:textSize="@dimen/_13sdp"
         android:textColor="#fff"
         android:text="Personal information"
         android:layout_width="match_parent"

@@ -29,8 +29,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_imageView"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_32sdp"
             android:src="@drawable/user"
@@ -83,7 +83,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_16sdp"
             android:textColor="#CEFFFFFF"
-            android:textSize="20sp"
+            android:textSize="@dimen/_11sdp"
             android:layout_marginLeft="@dimen/_30sdp"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toEndOf="@id/city_imageView"
@@ -109,21 +109,21 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:drawablePadding="10dp"
             android:textColor="#CEFFFFFF"
-            android:textSize="20sp"
+            android:textSize="@dimen/_11sdp"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toEndOf="@id/phone_imageView"
             app:layout_constraintTop_toBottomOf="@+id/city_textView"/>
 
         <Button
             android:id="@+id/edit_button"
-            android:layout_width="@dimen/_120sdp"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/background_btn2"
             android:text="Edit"
             android:textColor="#fff"
-            android:textSize="30sp"
+            android:textSize="@dimen/_13sdp"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@+id/phone_textView"/>
@@ -143,8 +143,8 @@
 
         <ImageView
             android:id="@+id/add_victim_button"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_16sdp"
             android:src="@drawable/add_profile"
@@ -158,7 +158,7 @@
             android:layout_gravity="center"
             android:text="Add VICTIM"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:textSize="@dimen/_11sdp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline_start"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"

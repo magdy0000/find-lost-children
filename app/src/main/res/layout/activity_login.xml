@@ -62,6 +62,7 @@
             android:layout_weight="1"
             android:backgroundTint="#fff"
             android:ems="10"
+            android:textSize="@dimen/_10sdp"
             android:textColor="@color/white"
             android:hint="E-mail"
             android:inputType="text"
@@ -76,11 +77,13 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:backgroundTint="#fff"
+            android:textSize="@dimen/_10sdp"
+
             android:ems="10"
             android:textColor="@color/white"
-            android:hint="PASSWORD"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:paddingBottom="15sp"
+            android:paddingBottom="15dp"
             android:textColorHint="#E4E7E4E4" />
 
         <Button
@@ -91,7 +94,7 @@
             android:background="@drawable/background_btn1"
             android:text="Login"
             android:textColor="#fff"
-            android:textSize="30sp" />
+            android:textSize="@dimen/_12sdp" />
 
         <LinearLayout
             android:gravity="center"
@@ -110,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:text=" SignUP Now !"
                 android:textColor="#DABD1B"
-                android:textSize="18sp" />
+                android:textSize="@dimen/_13sdp" />
         </LinearLayout>
 
 

@@ -21,6 +21,7 @@
         app:layout_constraintGuide_end="16dp" />
 
     <EditText
+        android:textSize="@dimen/_11sdp"
         android:id="@+id/edit_city"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
         android:backgroundTint="#fff"
         android:ems="10"
         android:hint="CITY"
-        android:textSize="22sp"
+
         android:inputType="text"
         android:textColor="@color/white"
         android:paddingBottom="15sp"
@@ -39,6 +40,7 @@
 
 
     <EditText
+        android:textSize="@dimen/_11sdp"
         android:id="@+id/edit_age"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -46,7 +48,7 @@
         android:backgroundTint="#fff"
         android:ems="10"
         android:hint="AGE"
-        android:textSize="22sp"
+
         android:textColor="@color/white"
         android:inputType="text"
         android:paddingBottom="15sp"
@@ -64,7 +66,7 @@
         android:textColor="@color/white"
         android:ems="10"
         android:hint="FACEBOOK USER/LINK"
-        android:textSize="22sp"
+        android:textSize="@dimen/_11sdp"
         android:inputType="text"
         android:paddingBottom="15sp"
         android:textColorHint="#E4E7E4E4"         app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -92,7 +94,7 @@
         android:backgroundTint="#fff"
         android:hint="About Me"
         android:textColorHint="#E4E7E4E4"
-        android:textSize="22sp"
+        android:textSize="@dimen/_11sdp"
         android:inputType="text"
         android:textColor="@color/white"
         android:layout_marginTop="16dp"

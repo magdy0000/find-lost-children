@@ -78,7 +78,7 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-
+     boolean check = false  ; 
     private String userId, userEmail;
     String userName, phone, city, age, facebookLink, about;
 
@@ -176,9 +176,9 @@ public class EditProfileActivity extends AppCompatActivity {
         about = editAbout.getText().toString();
 
 
-        if (imageUri != null) {
+        if (imageUri  != null) {
             final String imageName = UUID.randomUUID().toString() + ".jpg";
-
+            
             storageReference.child("Images").child("Users").child(imageName).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -187,6 +187,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             String imageURL = uri.toString();
                             databaseReference.child("Users").child(userId).child("imageURL").setValue(imageURL);
+                            check = true ;
                         }
                     });
                 }
@@ -198,33 +199,47 @@ public class EditProfileActivity extends AppCompatActivity {
             });
 
         }
-        if (userName != null) {
+        if (!userName.equals("")) {
             databaseReference.child("Users").child(userId).child("userName").setValue(userName);
+            check = true ;
         }
 
-        if (phone != null) {
+        if (!phone.equals("")) {
             databaseReference.child("Users").child(userId).child("phone").setValue(phone);
+            check = true ;
         }
 
-        if (city != null) {
+        if (!city.equals("")) {
             databaseReference.child("Users").child(userId).child("city").setValue(city);
+            check = true ;
         }
 
-        if (age != null) {
+        if (!age.equals("")) {
             databaseReference.child("Users").child(userId).child("age").setValue(age);
+            check = true ;
         }
 
-        if (facebookLink != null) {
+        if (!facebookLink.equals("")) {
             databaseReference.child("Users").child(userId).child("facebookLink").setValue(facebookLink);
+            check = true ;
         }
 
-        if (about != null) {
+        if (!about.equals("")) {
             databaseReference.child("Users").child(userId).child("about").setValue(about);
+            check = true ;
         }
+        
+        if(check) {
 
-        Toast.makeText(this, "Data Changed", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(this, ProfileFragment.class);
-        startActivity(intent);
+            Toast.makeText(this, "Data Changed", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+        }else {
+
+            Toast.makeText(this, "No thing changed", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -70,7 +70,7 @@
             android:textColor="#CEFFFFFF"
             android:drawableLeft="@drawable/ic_home_white"
             android:drawablePadding="10dp"
-            android:textSize="20sp">
+            android:textSize="@dimen/_12sdp">
 
         </TextView>
 
@@ -84,7 +84,7 @@
             android:drawableLeft="@drawable/ic_phone_black_24dp"
             android:drawablePadding="10dp"
             android:textColor="#CEFFFFFF"
-            android:textSize="20sp">
+            android:textSize="@dimen/_12sdp">
 
         </TextView>
 
@@ -97,12 +97,12 @@
             android:background="@drawable/background_btn1"
             android:text="Edit"
             android:textColor="#fff"
-            android:textSize="30sp" />
+            android:textSize="@dimen/_12sdp" />
 
         <ImageView
             android:id="@+id/add_victim_button"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
             android:src="@drawable/add_profile"
@@ -117,7 +117,7 @@
             android:drawablePadding="5dp"
             android:text="Add VICTIM"
             android:textColor="#fff"
-            android:textSize="20sp"
+            android:textSize="@dimen/_13sdp"
             android:textStyle="bold">
 
 

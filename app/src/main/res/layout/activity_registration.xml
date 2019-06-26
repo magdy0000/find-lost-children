@@ -57,13 +57,15 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
-            android:hint="USER NAME"
+            android:hint="User Name"
+            android:textSize="@dimen/_10sdp"
             android:paddingBottom="15sp"
             android:textColorHint="#E4E7E4E4"
             android:id="@+id/edit_userName"
             android:backgroundTint="#fff"
             android:layout_weight="1"/>
         <EditText
+            android:textSize="@dimen/_10sdp"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:layout_width="match_parent"
@@ -80,6 +82,8 @@
 
 
         <EditText
+            android:textSize="@dimen/_10sdp"
+
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:layout_width="match_parent"
@@ -93,6 +97,7 @@
             android:backgroundTint="#fff"
             android:layout_weight="1"/>
         <EditText
+            android:textSize="@dimen/_10sdp"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:layout_width="match_parent"
@@ -106,6 +111,7 @@
             android:backgroundTint="#fff"
             android:layout_weight="1"/>
         <EditText
+            android:textSize="@dimen/_10sdp"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:layout_width="match_parent"
@@ -121,13 +127,14 @@
 
 
         <Button
+            android:textSize="@dimen/_12sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/background_btn1"
             android:text="SIGN UP"
             android:textColor="#fff"
-            android:textSize="30sp"
+
             android:id="@+id/rejester"
 
             />

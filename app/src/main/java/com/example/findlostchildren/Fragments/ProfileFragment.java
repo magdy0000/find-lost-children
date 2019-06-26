@@ -2,7 +2,6 @@ package com.example.findlostchildren.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.findlostchildren.Activities.AddVictimActivity;
 import com.example.findlostchildren.Activities.EditProfileActivity;
-import com.example.findlostchildren.Activities.ProfileActivity;
 import com.example.findlostchildren.Models.UsersModel;
 import com.example.findlostchildren.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -84,7 +82,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         //get Current User ID
-        String userID = "zTK1GFINblNcrGdhF5EUB9XlE5M2"; //firebaseUser.getUid();
+        String userID = firebaseUser.getUid();
 
 
         //addListenerForSingleValueEvent to get data to Current User only

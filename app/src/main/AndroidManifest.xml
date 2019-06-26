@@ -18,7 +18,6 @@
         <activity android:name=".Activities.SearchActivity" />
         <activity android:name=".Activities.SettingActivity" />
         <activity android:name=".Activities.RegistrationActivity" />
-        <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.HomeActivity"></activity>
         <activity android:name=".Activities.CompleteInfoActivity" />

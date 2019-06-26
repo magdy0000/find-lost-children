@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;import android.view.View;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.findlostchildren.Fragments.HomeFragment;
 import com.example.findlostchildren.Fragments.NotificationFragment;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
+    private Fragment fragment  ;
+    private long backPressedTime ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +46,31 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        loadFragment(new HomeFragment());
+                        fragment = new HomeFragment();
+                        loadFragment(fragment ,"home" );
+
                         getSupportActionBar().setTitle("Home");
                         break;
                     case R.id.action_myVictims:
-                        loadFragment(new PersonalVictimFragment());
+                        fragment = new PersonalVictimFragment();
+                        loadFragment(fragment ,"My Victims" );
+
                         getSupportActionBar().setTitle("My Victims");
                         break;
                     case R.id.action_search:
-                        loadFragment(new SearchFragment());
+                        fragment = new SearchFragment();
+                        loadFragment(fragment , "search");
                         getSupportActionBar().setTitle("Search");
                         break;
                     case R.id.action_profile:
-                        loadFragment(new ProfileFragment());
+                        fragment = new ProfileFragment();
+                        loadFragment(fragment,"profile");
                         getSupportActionBar().setTitle("Profile");
                         break;
                     case R.id.action_notification:
-                        loadFragment(new NotificationFragment());
+                        fragment = new NotificationFragment();
+
+                        loadFragment(fragment,"notification");
                         getSupportActionBar().setTitle("Notification");
                         break;
                 }
@@ -69,18 +80,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadStartFragment() {
-        loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment(),"home");
     }
 
-    private void loadFragment(Fragment fragment) {
+    private void loadFragment(Fragment fragment , String tag) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.replace(R.id.fragment_container, fragment ,tag );
         fragmentTransaction.addToBackStack(null);
 
         getSupportFragmentManager().popBackStack();
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (!fragment.getTag().equals("home")) {
+            fragment = new HomeFragment();
 
+            loadFragment(fragment,"home");
+        }else {
+
+
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                finishAffinity();
+            } else {
+                Toast.makeText(this, "press again to exit ", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
