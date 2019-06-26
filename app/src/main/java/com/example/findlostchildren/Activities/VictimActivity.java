@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
+import com.squareup.picasso.Picasso;
+
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -161,6 +163,23 @@ public class VictimActivity extends AppCompatActivity {
 
     private void getData() {
 
+        ref.child("Users").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String posterName = dataSnapshot.child("userName").getValue(String.class);
+
+                if (posterName == null || posterName.isEmpty())
+                    poster_name.setText("User");
+                else
+                    poster_name.setText(posterName);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         ref.child("Victims").child(id).child(victimId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -169,7 +188,6 @@ public class VictimActivity extends AppCompatActivity {
                 VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
 
 
-                poster_name.setText(victimModel.getSourceName()+"");
                 vi_name.setText("Name : "+victimModel.getName());
                 city.setText("City : "+victimModel.getCity());
                 age.setText("Age : "+victimModel.getAge());

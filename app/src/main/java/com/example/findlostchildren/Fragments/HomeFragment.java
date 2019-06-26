@@ -96,7 +96,6 @@ public class HomeFragment extends Fragment {
         if (victimsArrayList != null) {
             victimAdapter = new VictimAdapter(context, victimsArrayList);
             victimRecyclerView.setAdapter(victimAdapter);
-            progressBar.setVisibility(View.GONE);
         } else {
             progressBar.setVisibility(View.GONE);
             noDataTV.setVisibility(View.VISIBLE);
