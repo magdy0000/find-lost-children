@@ -41,6 +41,11 @@ public class VictimActivity extends AppCompatActivity {
 
         victimIdTv = findViewById(R.id.victim_id_tv);
 
+         victimId = getIntent().getExtras().getString("ID");
+         id = getIntent().getExtras().getString("userId");
+
+        victimIdTv.setText(victimId);
+
         known=findViewById(R.id.known_victim);
         unknown=findViewById(R.id.unknown_victim);
 
