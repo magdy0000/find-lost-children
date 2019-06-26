@@ -171,10 +171,10 @@ public class VictimActivity extends AppCompatActivity {
 
                 poster_name.setText(victimModel.getSourceName()+"");
                 vi_name.setText(victimModel.getName());
-                city.setText(victimModel.getCity());
-                age.setText(victimModel.getAge());
+                city.setText("City"+victimModel.getCity());
+                age.setText("Age"+victimModel.getAge());
                 dis.setText(victimModel.getDescription());
-                phone.setText(victimModel.getNumber());
+                phone.setText("Number"+victimModel.getNumber());
                 Glide.with(VictimActivity.this).load(victimModel.getImagesURL()).into(vi_photo);
 
                 userID=victimModel.getUserId();
