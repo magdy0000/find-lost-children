@@ -86,6 +86,7 @@ public class AddVictimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_victim);
         ButterKnife.bind(this);
         imagesUrl = new ArrayList<>();
+        //imageUrl = null;
     }
 
     @OnClick({R.id.back_btn, R.id.victim_image, R.id.add_image_btn, R.id.add_victim_btn})
@@ -95,13 +96,13 @@ public class AddVictimActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.victim_image:
-                if(imageUrl == null)
+                if (imageUrl == null)
                     selectImage();
                 else
                     Toast.makeText(this, "You select photo before", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_image_btn:
-                    addImage();
+                addImage();
                 break;
             case R.id.add_victim_btn:
                 if (getInputData())
@@ -111,7 +112,7 @@ public class AddVictimActivity extends AppCompatActivity {
     }
 
     private boolean getInputData() {
-        if (imageUrl.isEmpty()) {
+        if (imageUrl == null) {
             Toast.makeText(this, "Please Select Victim Photo", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -188,6 +189,7 @@ public class AddVictimActivity extends AppCompatActivity {
         }
 
     }
+
     private void saveVictim() {
 
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm aa");
