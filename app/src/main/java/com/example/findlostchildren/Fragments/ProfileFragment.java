@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.findlostchildren.Activities.AddVictimActivity;
 import com.example.findlostchildren.Activities.EditProfileActivity;
+import com.example.findlostchildren.Activities.LoginActivity;
 import com.example.findlostchildren.Models.UsersModel;
 import com.example.findlostchildren.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +43,8 @@ public class ProfileFragment extends Fragment {
 
     FirebaseDatabase database;
     DatabaseReference reference;
+
+    private Button signOut;
 
     UsersModel user;
 
@@ -72,6 +75,7 @@ public class ProfileFragment extends Fragment {
         phone_textView = view.findViewById(R.id.phone_textView);
         edit_button = view.findViewById(R.id.edit_button);
         add_victim_button = view.findViewById(R.id.add_victim_button);
+        signOut = view.findViewById(R.id.sign_out_button);
 
         context = getActivity().getApplicationContext();
         Context mContext = getActivity();
@@ -128,7 +132,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context , EditProfileActivity.class);
+                Intent intent = new Intent(context, EditProfileActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -137,14 +141,23 @@ public class ProfileFragment extends Fragment {
         add_victim_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context , AddVictimActivity.class);
+                Intent intent = new Intent(context, AddVictimActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
 
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                Intent intent = new Intent(context, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+                getActivity().finish();
+            }
+        });
         return view;
     }
-
 
 }
