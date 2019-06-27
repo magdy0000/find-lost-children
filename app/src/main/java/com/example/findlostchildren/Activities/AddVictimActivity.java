@@ -261,6 +261,7 @@ public class AddVictimActivity extends AppCompatActivity {
     }
 
     public static String encodeToBase64(Bitmap image) {
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] b = baos.toByteArray();
