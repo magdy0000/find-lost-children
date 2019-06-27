@@ -10,9 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+import com.example.findlostchildren.Models.ModelNotification;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +35,7 @@ import java.util.Scanner;
 public class VictimActivity extends AppCompatActivity {
 
     public static String userID;
+
     Button known ;
     TextView victimIdTv , poster_name , vi_name , date , phone ,city , age , dis ;
     ImageView vi_photo , poster_photo;
@@ -36,10 +43,14 @@ public class VictimActivity extends AppCompatActivity {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference() ;
     FirebaseAuth auth = FirebaseAuth.getInstance() ;
 
+    String phoneOfCurrentUser , nameOfCurrentUuser , imageVictimFornotification  ,victimNameOfNotification ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_victim);
+
+
 
         poster_name=findViewById(R.id.poster_name);
         vi_name=findViewById(R.id.vi_name);
@@ -51,17 +62,26 @@ public class VictimActivity extends AppCompatActivity {
         vi_photo=findViewById(R.id.vi_photo);
         poster_photo=findViewById(R.id.poster_photo);
 
+        known=findViewById(R.id.known_victim);
          victimId = getIntent().getExtras().getString("ID");
          id = getIntent().getExtras().getString("userId");
 
 
+         if (auth.getCurrentUser().getUid().equals(id)){
+             known.setVisibility(View.GONE);
 
-        known=findViewById(R.id.known_victim);
+         }
+
+
+
+
 
 
         known.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
 
                 known.setEnabled(false);
                 OneSignal.startInit(VictimActivity.this).init();
@@ -142,19 +162,37 @@ public class VictimActivity extends AppCompatActivity {
                         }
                     }
                 });
-                DataSnapshot dataSnapshot=null;
-                VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
 
-                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference() ;
-                ref1.child("notifaction").setValue(victimModel.getName());
+                ModelNotification model = new ModelNotification();
+
+                model.setNameChild(victimNameOfNotification);
+                model.setPhoneNumber(phoneOfCurrentUser);
+                model.setImage(imageVictimFornotification);
+                model.setUserName(nameOfCurrentUuser);
+
+                ref.child("Notification").child(id).push().setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Intent i = new Intent(VictimActivity.this,MainActivity.class);
+                        startActivity(i);
+                        finish();
+
+                        Toast.makeText(VictimActivity.this, "Notifivation sended", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        Toast.makeText(VictimActivity.this, e.getMessage()+"", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
 
 
 
 
-                Intent i = new Intent(VictimActivity.this,MainActivity.class);
-                startActivity(i);
-                finish();
             }
 
 
@@ -162,6 +200,25 @@ public class VictimActivity extends AppCompatActivity {
 
 
         getData();
+        currentUserData();
+    }
+
+    private void currentUserData(){
+        ref.child("Users").child(auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                nameOfCurrentUuser = dataSnapshot.child("userName").getValue(String.class);
+                phoneOfCurrentUser = dataSnapshot.child("phone").getValue(String.class);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
@@ -170,12 +227,13 @@ public class VictimActivity extends AppCompatActivity {
         ref.child("Users").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String posterName = dataSnapshot.child("userName").getValue(String.class);
 
-                if (posterName == null || posterName.isEmpty())
+              String  nameOfuser = dataSnapshot.child("userName").getValue(String.class);
+
+                if (nameOfuser == null || nameOfuser.isEmpty())
                     poster_name.setText("User");
                 else
-                    poster_name.setText(posterName);
+                    poster_name.setText(nameOfuser);
 
             }
 
@@ -190,6 +248,10 @@ public class VictimActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
+
+
+                imageVictimFornotification = victimModel.getImagesURL();
+                victimNameOfNotification = victimModel.getName();
 
 
                 vi_name.setText("Name : "+victimModel.getName());

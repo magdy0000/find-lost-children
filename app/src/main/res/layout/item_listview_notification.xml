@@ -11,6 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher_round"
         />
 
@@ -39,4 +40,19 @@
         android:textSize="@dimen/_11sdp"
 
         />
+    <TextView
+
+        android:id="@+id/phone_noti"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/victim_name_noti"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_toRightOf="@id/poster_photo_noti"
+        android:textColor="@color/white"
+        android:text="dfvhnlkfdnvkjdfvndkbfdb"
+        android:textSize="@dimen/_11sdp"
+
+        />
+
 </RelativeLayout>

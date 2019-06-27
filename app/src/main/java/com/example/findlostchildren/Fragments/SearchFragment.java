@@ -1,6 +1,5 @@
 package com.example.findlostchildren.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,7 +21,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.findlostchildren.Activities.CardInfoActivity;
 import com.example.findlostchildren.Models.Base64Image;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
@@ -37,7 +35,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -240,12 +237,15 @@ public class SearchFragment extends Fragment {
 
 
                    if (!nameForSearch.equals("")){
+                      base64Image="";
+                       imageView.setImageResource(R.drawable.user);
 
                        searchByName();
 
 
                    }else {
-
+                       base64Image = "" ;
+                       imageView.setImageResource(R.drawable.user);
                        parent.setVisibility(View.VISIBLE);
                        progressBar.setVisibility(View.GONE);
                        Toast.makeText(getContext(), "No Result", Toast.LENGTH_SHORT).show();
@@ -279,7 +279,7 @@ public class SearchFragment extends Fragment {
         ref.child("Victims").orderByChild(victimId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText(getContext(), "damsldmsapmdpsa", Toast.LENGTH_SHORT).show();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot childSnapShot : snapshot.getChildren()) {
                     victimModel  = childSnapShot.getValue(VictimModel.class);
