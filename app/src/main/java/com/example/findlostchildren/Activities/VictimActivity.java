@@ -10,9 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
 import com.bumptech.glide.Glide;
 import com.example.findlostchildren.Models.VictimModel;
 import com.example.findlostchildren.R;
@@ -24,8 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
-import com.squareup.picasso.Picasso;
-
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -147,6 +142,15 @@ public class VictimActivity extends AppCompatActivity {
                         }
                     }
                 });
+                DataSnapshot dataSnapshot=null;
+                VictimModel victimModel = dataSnapshot.getValue(VictimModel.class);
+
+                DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference() ;
+                ref1.child("notifaction").setValue(victimModel.getName());
+
+
+
+
 
                 Intent i = new Intent(VictimActivity.this,MainActivity.class);
                 startActivity(i);
