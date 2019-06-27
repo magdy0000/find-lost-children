@@ -242,6 +242,7 @@ public class AddVictimActivity extends AppCompatActivity {
                 }
             });
         }
+
         VictimModel newVictim = new VictimModel(userId, victimId, postTime, imageUrl, name, city, age, number, description, deviceToken);
         databaseReference.child("Victims").child(userId).child(victimId).setValue(newVictim).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

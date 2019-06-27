@@ -17,7 +17,7 @@ public class CardInfoActivity extends AppCompatActivity {
 
 
 
-   DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+   /*DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +44,5 @@ public class CardInfoActivity extends AppCompatActivity {
 
     }
 
-
+*/
 }
